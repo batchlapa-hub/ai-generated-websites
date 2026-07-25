@@ -1,96 +1,97 @@
-const navLinks = document.querySelectorAll('nav a');
-navLinks.forEach(link => {
- link.addEventListener('click', e => {
- e.preventDefault();
- const targetId = link.getAttribute('href').substring(1);
- document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
- });
-});
+const goalForm = document.getElementById('goal-form');
+const goalInput = document.getElementById('goal-input');
+const goalList = document.getElementById('goal-list');
+const progressContainer = document.getElementById('progress-container');
+const progressBar = document.getElementById('progress-bar');
+const quoteDisplay = document.getElementById('quote-display');
+const quoteButton = document.getElementById('quote-button');
 
-document.addEventListener('DOMContentLoaded', () => {
- const serviceCards = document.querySelectorAll('.service-card');
- serviceCards.forEach(card => {
- card.addEventListener('click', () => {
- const description = card.querySelector('.service-description');
- description.classList.toggle('active');
- });
- });
+let goals = [];
 
- const contactForm = document.getElementById('contact-form');
- contactForm.addEventListener('submit', e => {
- e.preventDefault();
- const name = document.getElementById('name').value.trim();
- const email = document.getElementById('email').value.trim();
- const message = document.getElementById('message').value.trim();
- 
- if (!name || !email || !message) {
- alert('Please fill in all fields');
- return;
- }
- 
- // Simulate form submission
- contactForm.reset();
- alert('Thank you for your message!');
- });
-});
-
-const goalButtons = document.querySelectorAll('.goal-btn');
-const goalContent = document.getElementById('goal-content');
-
-goalButtons.forEach(button => {
- button.addEventListener('click', () => {
- const goal = button.dataset.goal;
- let content = '';
- 
- switch(goal) {
- case 'strength':
- content = 'Build muscle and increase strength with our personalized training programs.';
- break;
- case 'yoga':
- content = 'Find balance and flexibility through our mindful yoga sessions.';
- break;
- case 'cardio':
- content = 'Boost your heart health with high-energy cardio workouts.';
- break;
- }
- 
- goalContent.textContent = content;
- });
-});
-
-let currentTestimonial = 0;
-const testimonials = [
- "Aura Fit transformed my lifestyle - I've never felt better!",
- "The personalized approach made all the difference in my journey.",
- "Finally found a community that truly understands wellness."
-];
-
-function showTestimonial(index) {
- document.getElementById('testimonial-text').textContent = testimonials[index];
+function saveGoals() {
+  localStorage.setItem('wellnessGoals', JSON.stringify(goals));
 }
 
-document.getElementById('next-testimonial').addEventListener('click', () => {
- currentTestimonial = (currentTestimonial + 1) % testimonials.length;
- showTestimonial(currentTestimonial);
+function loadGoals() {
+  const savedGoals = localStorage.getItem('wellnessGoals');
+  if (savedGoals) {
+    goals = JSON.parse(savedGoals);
+    renderGoals();
+    updateProgress();
+  }
+}
+
+function addGoal(text) {
+  goals.push({ id: Date.now(), text, completed: false });
+  saveGoals();
+  renderGoals();
+  updateProgress();
+}
+
+function toggleGoalCompletion(id) {
+  goals = goals.map(goal => 
+    goal.id === id ? { ...goal, completed: !goal.completed } : goal
+  );
+  saveGoals();
+  renderGoals();
+  updateProgress();
+}
+
+function renderGoals() {
+  goalList.innerHTML = '';
+  let completedCount = 0;
+  
+  goals.forEach(goal => {
+    const li = document.createElement('li');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = goal.completed;
+    checkbox.addEventListener('change', () => toggleGoalCompletion(goal.id));
+    
+    const span = document.createElement('span');
+    span.textContent = goal.text;
+    
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    goalList.appendChild(li);
+    
+    if (goal.completed) completedCount++;
+  });
+}
+
+function updateProgress() {
+  const total = goals.length;
+  const completed = goals.filter(g => g.completed).length;
+  
+  progressContainer.style.display = total > 0 ? 'block' : 'none';
+  progressBar.style.width = `${(completed / total) * 100}%`;
+  progressBar.textContent = `${completed}/${total} Goals Completed`;
+}
+
+function getRandomQuote() {
+  const quotes = [
+    "Your health is your greatest wealth.",
+    "Small steps today lead to big changes tomorrow.",
+    "Wellness is a journey, not a destination.",
+    "Take care of your body; it's the only one you have.",
+    "Progress, not perfection."
+  ];
+  
+  return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+goalForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const text = goalInput.value.trim();
+  if (text && !goals.some(g => g.text === text)) {
+    addGoal(text);
+    goalInput.value = '';
+  }
 });
 
-document.getElementById('prev-testimonial').addEventListener('click', () => {
- currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
- showTestimonial(currentTestimonial);
+quoteButton.addEventListener('click', () => {
+  quoteDisplay.textContent = getRandomQuote();
 });
 
-showTestimonial(currentTestimonial);
-
-const animatedSections = document.querySelectorAll('.animate-on-scroll');
-const observer = new IntersectionObserver((entries, observer) => {
- entries.forEach(entry => {
- if (entry.isIntersecting) {
- entry.target.classList.add('visible');
- observer.unobserve(entry.target);
- }
- });
-}, { threshold: 0.1 });
-
-animatedSections.forEach(section => {
- observer.observe(section);
-});
+loadGoals();
+quoteDisplay.textContent = getRandomQuote();
