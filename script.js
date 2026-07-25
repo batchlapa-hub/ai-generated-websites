@@ -1,38 +1,52 @@
-const init = () => {  
-  const form = document.getElementById('contactForm');  
-  const emailInput = document.getElementById('email');  
-  const messageContainer = document.getElementById('message');  
-  const toggleBtn = document.getElementById('toggleBtn');  
-  const contentBox = document.getElementById('contentBox');  
+const navLinks = document.querySelectorAll('nav a');
+const contactForm = document.querySelector('#contact-form');
+const modalTrigger = document.querySelector('#learn-more');
+const modal = document.querySelector('#wellness-modal');
+const closeModalBtn = document.querySelector('.close-modal');
 
-  // Form validation  
-  form.addEventListener('submit', (e) => {  
-    e.preventDefault();  
-    if (validateEmail(emailInput.value)) {  
-      messageContainer.textContent = 'Form submitted successfully!';  
-      messageContainer.style.color = 'green';  
-    } else {  
-      messageContainer.textContent = 'Please enter a valid email address';  
-      messageContainer.style.color = 'red';  
-    }  
-  });  
+navLinks.forEach(link => {
+ link.addEventListener('click', e => {
+  e.preventDefault();
+  const targetId = link.getAttribute('href').substring(1);
+  document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+ });
+});
 
-  // Real-time email validation  
-  emailInput.addEventListener('input', () => {  
-    const isValid = validateEmail(emailInput.value);  
-    emailInput.classList.toggle('invalid', !isValid);  
-  });  
+contactForm.addEventListener('submit', e => {
+ e.preventDefault();
+ const name = contactForm.name.value.trim();
+ const email = contactForm.email.value.trim();
+ const message = contactForm.message.value.trim();
+ 
+ if (!name || !email || !message) {
+  alert('Please fill in all fields');
+  return;
+ }
+ 
+ if (!isValidEmail(email)) {
+  alert('Please enter a valid email address');
+  return;
+ }
+ 
+ alert('Thank you for your message!');
+ contactForm.reset();
+});
 
-  // Dynamic content toggle  
-  toggleBtn.addEventListener('click', () => {  
-    contentBox.textContent = contentBox.textContent === 'Hidden Content' ? 'Visible Content' : 'Hidden Content';  
-  });  
+modalTrigger.addEventListener('click', () => {
+ modal.classList.add('active');
+});
 
-  // Utility function for email validation  
-  function validateEmail(email) {  
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
-    return re.test(String(email).toLowerCase());  
-  }  
-};  
+closeModalBtn.addEventListener('click', () => {
+ modal.classList.remove('active');
+});
 
-document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('click', e => {
+ if (e.target === modal) {
+  modal.classList.remove('active');
+ }
+});
+
+function isValidEmail(email) {
+ const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ return re.test(email);
+}
