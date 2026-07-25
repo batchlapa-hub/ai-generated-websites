@@ -1,62 +1,96 @@
-const goals = ['Weight Loss', 'Stress Relief', 'Energy Boost', 'Sleep Improvement'];
-const tips = {
-  'Weight Loss': ['Eat more vegetables', 'Stay hydrated', '15 minutes of daily exercise'],
-  'Stress Relief': ['Practice deep breathing', 'Take short walks', 'Meditate for 10 minutes'],
-  'Energy Boost': ['Get 7 hours of sleep', 'Drink green tea', 'Stretch every hour'],
-  'Sleep Improvement': ['Avoid screens before bed', 'Keep a consistent bedtime', 'Use blackout curtains']
-};
+const navLinks = document.querySelectorAll('nav a');
+navLinks.forEach(link => {
+ link.addEventListener('click', e => {
+ e.preventDefault();
+ const targetId = link.getAttribute('href').substring(1);
+ document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+ });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+ const serviceCards = document.querySelectorAll('.service-card');
+ serviceCards.forEach(card => {
+ card.addEventListener('click', () => {
+ const description = card.querySelector('.service-description');
+ description.classList.toggle('active');
+ });
+ });
+
+ const contactForm = document.getElementById('contact-form');
+ contactForm.addEventListener('submit', e => {
+ e.preventDefault();
+ const name = document.getElementById('name').value.trim();
+ const email = document.getElementById('email').value.trim();
+ const message = document.getElementById('message').value.trim();
+ 
+ if (!name || !email || !message) {
+ alert('Please fill in all fields');
+ return;
+ }
+ 
+ // Simulate form submission
+ contactForm.reset();
+ alert('Thank you for your message!');
+ });
+});
 
 const goalButtons = document.querySelectorAll('.goal-btn');
-const tipContainer = document.querySelector('#tips');
-const form = document.querySelector('form');
-const emailInput = document.getElementById('email');
-const nameInput = document.getElementById('name');
-const progressSlider = document.getElementById('progress');
-const progressValue = document.getElementById('progress-value');
-
-function updateTips(selectedGoal) {
-  tipContainer.innerHTML = '';
-  tips[selectedGoal].forEach(tip => {
-    const p = document.createElement('p');
-    p.textContent = tip;
-    tipContainer.appendChild(p);
-  });
-}
+const goalContent = document.getElementById('goal-content');
 
 goalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    goals.forEach(goal => {
-      document.querySelector(`.goal-btn[data-goal="${goal}"]`).classList.remove('selected');
-    });
-    button.classList.add('selected');
-    updateTips(button.dataset.goal);
-  });
+ button.addEventListener('click', () => {
+ const goal = button.dataset.goal;
+ let content = '';
+ 
+ switch(goal) {
+ case 'strength':
+ content = 'Build muscle and increase strength with our personalized training programs.';
+ break;
+ case 'yoga':
+ content = 'Find balance and flexibility through our mindful yoga sessions.';
+ break;
+ case 'cardio':
+ content = 'Boost your heart health with high-energy cardio workouts.';
+ break;
+ }
+ 
+ goalContent.textContent = content;
+ });
 });
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
-  
-  if (!name || !email) {
-    alert('Please fill in all fields');
-    return;
-  }
-  
-  if (!isValidEmail(email)) {
-    alert('Please enter a valid email address');
-    return;
-  }
-  
-  alert(`Thank you, ${name}! You're subscribed to Aura Fit updates.`);
-  form.reset();
-});
+let currentTestimonial = 0;
+const testimonials = [
+ "Aura Fit transformed my lifestyle - I've never felt better!",
+ "The personalized approach made all the difference in my journey.",
+ "Finally found a community that truly understands wellness."
+];
 
-function isValidEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(String(email).toLowerCase());
+function showTestimonial(index) {
+ document.getElementById('testimonial-text').textContent = testimonials[index];
 }
 
-progressSlider.addEventListener('input', () => {
-  progressValue.textContent = `${progressSlider.value}%`;
+document.getElementById('next-testimonial').addEventListener('click', () => {
+ currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+ showTestimonial(currentTestimonial);
+});
+
+document.getElementById('prev-testimonial').addEventListener('click', () => {
+ currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+ showTestimonial(currentTestimonial);
+});
+
+showTestimonial(currentTestimonial);
+
+const animatedSections = document.querySelectorAll('.animate-on-scroll');
+const observer = new IntersectionObserver((entries, observer) => {
+ entries.forEach(entry => {
+ if (entry.isIntersecting) {
+ entry.target.classList.add('visible');
+ observer.unobserve(entry.target);
+ }
+ });
+}, { threshold: 0.1 });
+
+animatedSections.forEach(section => {
+ observer.observe(section);
 });
