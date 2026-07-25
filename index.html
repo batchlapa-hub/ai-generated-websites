@@ -1,50 +1,33 @@
 <header>
-  <nav aria-label="Main Navigation">
-    <div class="logo">
-      <!-- Example inline SVG logo -->
-      <svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-        <rect width="100" height="40" fill="#007BFF"/>
-        <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="24" font-family="Arial">Logo</text>
-      </svg>
-    </div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
   </nav>
+  <svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="20" r="15" fill="#007BFF"/>
+    <text x="50" y="25" font-family="sans-serif" font-size="16" text-anchor="middle" fill="white">Logo</text>
+  </svg>
 </header>
-
 <main>
-  <section class="hero">
-    <h1>Welcome to Our Service</h1>
-    <p>Your solution for all your needs. <a href="pricing.html">Learn more</a>.</p>
-    <!-- Example inline SVG icon -->
-    <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="#007BFF"/>
-    </svg>
+  <section aria-labelledby="hero-heading">
+    <h1 id="hero-heading">Welcome to Our Service</h1>
+    <p>This is a semantic HTML5 page structure with embedded SVG and proper navigation links.</p>
   </section>
-  <section class="features">
-    <h2>Features</h2>
+  <section aria-labelledby="features-heading">
+    <h2 id="features-heading">Features</h2>
     <ul>
-      <li>Feature one description.</li>
-      <li>Feature two description.</li>
-      <li>Feature three description.</li>
+      <li>Feature one</li>
+      <li>Feature two</li>
+      <li>Feature three</li>
     </ul>
   </section>
 </main>
-
 <footer>
   <p>&copy; 2023 Company Name. All rights reserved.</p>
-  <nav aria-label="Footer Navigation">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
   </nav>
-  <!-- Example inline SVG social icon -->
-  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M22.675 0H1.325C.593 0 0 0.774 0 1.705v20.591C0 23.226 0.593 24 1.325 24h11.334l-2.686-6.835h-3.604v-2.849h2.878l0.76-1.936c0.078-0.2 0.113-0.412 0.113-0.636 0-.224-.035-.436-.113-.636l-0.76-1.936h3.604v-2.849h-4.679C1.761 2.774 2 2 2.732 2h10.541C22.407 2 23 2.774 23 3.705v1.791l-2.686 6.835h3.604c0.732 0 1.325-.774 1.325-1.705V1.705C24 0.774 23.407 0 22.675 0z" fill="#007BFF"/>
-  </svg>
 </footer>
