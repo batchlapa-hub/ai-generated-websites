@@ -1,154 +1,184 @@
 document.addEventListener('DOMContentLoaded', () => {  
-  // Age verification overlay  
-  const ageOverlay = document.getElementById('age-verification');  
-  const enterBtn = document.querySelector('#age-verification [data-action="enter"]');  
-  const exitBtn = document.querySelector('#age-verification [data-action="exit"]');  
-  
-  if (ageOverlay) {  
-    // Check localStorage for prior verification  
-    if (!localStorage.getItem('ageVerified')) {  
-      ageOverlay.style.display = 'flex';  
-    }  
-  
-    enterBtn.addEventListener('click', () => {  
-      localStorage.setItem('ageVerified', 'true');  
-      ageOverlay.style.display = 'none';  
-    });  
-  
-    exitBtn.addEventListener('click', () => {  
-      ageOverlay.style.display = 'none';  
-    });  
-  }  
-  
-  // Mobile navigation toggle  
-  const mobileMenuBtn = document.querySelector('[data-mobile-menu]');  
-  const navDrawer = document.querySelector('[data-nav-drawer]');  
-  
-  if (mobileMenuBtn && navDrawer) {  
-    mobileMenuBtn.addEventListener('click', () => {  
-      navDrawer.classList.toggle('active');  
-    });  
-  
-    // Close drawer on outside click  
-    document.addEventListener('click', (e) => {  
-      if (!navDrawer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {  
-        navDrawer.classList.remove('active');  
-      }  
-    });  
-  }  
-  
-  // Services pricing filter tabs  
-  const serviceFilters = document.querySelectorAll('[data-service-filter]');  
-  const serviceCards = document.querySelectorAll('[data-service-card]');  
-  
-  if (serviceFilters.length > 0 && serviceCards.length > 0) {  
-    serviceFilters.forEach(filter => {  
-      filter.addEventListener('click', (e) => {  
-        const category = e.target.dataset.serviceFilter;  
-        serviceCards.forEach(card => {  
-          card.style.display = category === 'all' || card.dataset.category === category ? 'block' : 'none';  
+  // Hero Section Interactions  
+  const hero = document.getElementById('hero');  
+  if (hero) {  
+    // Animated gradient overlay  
+    const gradientOverlay = hero.querySelector('.gradient-overlay');  
+    if (gradientOverlay) {  
+      let lastScrollY = window.scrollY;  
+      window.addEventListener('scroll', () => {  
+        const scrollDiff = window.scrollY - lastScrollY;  
+        gradientOverlay.style.backgroundPosition = `50% ${window.scrollY * 0.5}px`;  
+        lastScrollY = window.scrollY;  
+      });  
+
+      // Light trail animation on scroll direction  
+      let lightTrailTimeout;  
+      window.addEventListener('scroll', () => {  
+        clearTimeout(lightTrailTimeout);  
+        lightTrailTimeout = setTimeout(() => {  
+          const trail = document.createElement('div');  
+          trail.classList.add('light-trail');  
+          trail.style.left = `${window.scrollX + window.innerWidth / 2}px`;  
+          hero.appendChild(trail);  
+          setTimeout(() => trail.remove(), 1000);  
+        }, 50);  
+      });  
+
+      // CTA button hover effect  
+      const ctaButtons = hero.querySelectorAll('.cta-button');  
+      ctaButtons.forEach(btn => {  
+        btn.addEventListener('mouseenter', () => {  
+          btn.style.transform = 'scale(1.05)';  
+          btn.style.boxShadow = '0 0 20px rgba(255,215,0,0.3)';  
+        });  
+        btn.addEventListener('mouseleave', () => {  
+          btn.style.transform = '';  
+          btn.style.boxShadow = '';  
         });  
       });  
-    });  
+    }  
   }  
-  
-  // Modal form handler (enquiry form)  
-  const enquiryBtns = document.querySelectorAll('[data-open-modal="enquiry"]');  
-  const modalOverlay = document.querySelector('[data-modal-overlay]');  
-  const closeModalBtn = document.querySelector('[data-close-modal]');  
-  const formSubmit = document.querySelector('[data-form-submit]');  
-  
-  if (modalOverlay && enquiryBtns.length > 0) {  
-    // Open modal on button click  
-    enquiryBtns.forEach(btn => {  
-      btn.addEventListener('click', () => {  
-        modalOverlay.style.display = 'flex';  
+
+  // Core Offering - Service Cards & Tabs  
+  const coreSection = document.getElementById('core_offering_or_features');  
+  if (coreSection) {  
+    // Tab switching  
+    const tabs = coreSection.querySelectorAll('.tab-button');  
+    const tabContents = coreSection.querySelectorAll('.tab-content');  
+    tabs.forEach(tab => {  
+      tab.addEventListener('click', () => {  
+        const target = tab.getAttribute('data-tab');  
+        tabContents.forEach(content => {  
+          content.classList.remove('active');  
+        });  
+        document.querySelector(`.tab-content[data-tab="${target}"]`).classList.add('active');  
+        tabs.forEach(t => t.classList.remove('active'));  
+        tab.classList.add('active');  
       });  
     });  
-  
-    // Close modal on overlay click or close button  
-    closeModalBtn.addEventListener('click', () => {  
-      modalOverlay.style.display = 'none';  
+
+    // 3D tilt effect on card hover  
+    const cards = coreSection.querySelectorAll('.service-card');  
+    cards.forEach(card => {  
+      card.addEventListener('mousemove', e => {  
+        const rect = card.getBoundingClientRect();  
+        const x = e.clientX - rect.left;  
+        const y = e.clientY - rect.top;  
+        card.style.transform = `perspective(1000px) rotateX(${y / 20}deg) rotateY(${-x / 20}deg)`;  
+      });  
+      card.addEventListener('mouseleave', () => {  
+        card.style.transform = '';  
+      });  
     });  
-  
-    modalOverlay.addEventListener('click', (e) => {  
-      if (e.target === modalOverlay) {  
-        modalOverlay.style.display = 'none';  
-      }  
+
+    // Price tooltips on hover  
+    const priceTooltips = coreSection.querySelectorAll('.price-tooltip');  
+    priceTooltips.forEach(tooltip => {  
+      tooltip.addEventListener('mouseenter', () => {  
+        tooltip.classList.add('visible');  
+      });  
+      tooltip.addEventListener('mouseleave', () => {  
+        tooltip.classList.remove('visible');  
+      });  
     });  
-  
-    // Form submission handler  
-    formSubmit.addEventListener('submit', (e) => {  
-      e.preventDefault();  
-      const fields = document.querySelectorAll('[data-form-field]');  
-      let isValid = true;  
-  
-      fields.forEach(field => {  
-        if (!field.value.trim()) {  
-          field.classList.add('error');  
-          isValid = false;  
+  }  
+
+  // Immersive Showcase - Horizontal Scroll & Spotlight Navigation  
+  const showcaseSection = document.getElementById('immersive_showcase');  
+  if (showcaseSection) {  
+    let isDragging = false;  
+    let startX, scrollLeft;  
+
+    // Touch/mouse drag navigation  
+    showcaseSection.addEventListener('mousedown', e => {  
+      isDragging = true;  
+      startX = e.pageX - showcaseSection.offsetLeft;  
+      scrollLeft = showcaseSection.scrollLeft;  
+    });  
+
+    showcaseSection.addEventListener('mouseleave', () => {  
+      isDragging = false;  
+    });  
+
+    showcaseSection.addEventListener('mousemove', e => {  
+      if (!isDragging) return;  
+      const x = e.pageX - showcaseSection.offsetLeft;  
+      const walk = (x - startX) * 2;  
+      showcaseSection.scrollLeft = scrollLeft - walk;  
+    });  
+
+    // Dynamic shadow transitions between content blocks  
+    const contentBlocks = showcaseSection.querySelectorAll('.content-block');  
+    contentBlocks.forEach(block => {  
+      block.addEventListener('mouseenter', () => {  
+        block.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';  
+      });  
+      block.addEventListener('mouseleave', () => {  
+        block.style.boxShadow = '';  
+      });  
+    });  
+  }  
+
+  // Conversion Form - Real-time Validation & Success Animation  
+  const contactForm = document.getElementById('conversion_or_contact');  
+  if (contactForm) {  
+    const formFields = contactForm.querySelectorAll('input, select');  
+    formFields.forEach(field => {  
+      field.addEventListener('input', () => {  
+        if (field.checkValidity()) {  
+          field.classList.remove('invalid');  
+          field.nextElementSibling?.classList.remove('error-message');  
         } else {  
-          field.classList.remove('error');  
+          field.classList.add('invalid');  
+          field.nextElementSibling?.classList.add('error-message');  
         }  
       });  
-  
-      if (isValid) {  
-        modalOverlay.style.display = 'none';  
-        alert('Thank you for your interest. We\'ll contact you shortly.');  
-      }  
     });  
-  }  
-  
-  // Gallery lightbox (about venue images)  
-  const galleryImages = document.querySelectorAll('[data-gallery-image]');  
-  
-  if (galleryImages.length > 0) {  
-    const lightboxOverlay = document.createElement('div');  
-    lightboxOverlay.className = 'lightbox-overlay';  
-    lightboxOverlay.style.display = 'none';  
-    document.body.appendChild(lightboxOverlay);  
-  
-    const lightboxImage = document.createElement('img');  
-    lightboxImage.className = 'lightbox-image';  
-    lightboxOverlay.appendChild(lightboxImage);  
-  
-    const closeLightboxBtn = document.createElement('button');  
-    closeLightboxBtn.textContent = '×';  
-    closeLightboxBtn.className = 'lightbox-close';  
-    lightboxOverlay.appendChild(closeLightboxBtn);  
-  
-    galleryImages.forEach(img => {  
-      img.addEventListener('click', () => {  
-        lightboxImage.src = img.dataset.galleryImage;  
-        lightboxOverlay.style.display = 'flex';  
-      });  
-    });  
-  
-    closeLightboxBtn.addEventListener('click', () => {  
-      lightboxOverlay.style.display = 'none';  
-    });  
-  
-    // Close on outside click  
-    lightboxOverlay.addEventListener('click', (e) => {  
-      if (e.target === lightboxOverlay) {  
-        lightboxOverlay.style.display = 'none';  
-      }  
-    });  
-  }  
-  
-  // Smooth scrolling for anchor links  
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {  
-    anchor.addEventListener('click', function(e) {  
+
+    contactForm.addEventListener('submit', e => {  
       e.preventDefault();  
-      const targetId = this.getAttribute('href');  
-      const targetElement = document.querySelector(targetId);  
-  
-      if (targetElement) {  
-        window.scrollTo({  
-          top: targetElement.offsetTop - 60, // Adjust for header height  
-          behavior: 'smooth'  
-        });  
+      // Simulate form submission  
+      setTimeout(() => {  
+        const successMessage = document.createElement('div');  
+        successMessage.classList.add('success-animation');  
+        successMessage.innerHTML = `  
+          <svg viewBox="0 0 24 24" width="50" height="50">  
+            <path fill="#FFD700" d="M12,0C5.373,0,0,5.373,0,12s5.373,12,12,12s12-5.373,12-12S18.627,0,12,0z M12,22c-5.523,0-10-4.477-10-10s4.477-10,10-10s10,4.477,10,10S17.523,22,12,22z"/>  
+            <path fill="#FFD700" d="M9.93,13l-2.34-2.34c-0.39-0.39-1.02-0.39-1.41,0l-3,3c-0.39,0.39-0.39,1.02,0,1.41l3,3c0.39,0.39,1.02,0.39,1.41,0l2.34-2.34c0.39-0.39,0.39-1.02,0-1.41L9.93,13z"/>  
+          </svg>  
+          <span>Your reservation is confirmed!</span>  
+        `;  
+        contactForm.appendChild(successMessage);  
+        setTimeout(() => successMessage.remove(), 3000);  
+      }, 500);  
+    });  
+  }  
+
+  // Micro-Interactions: Glassmorphic Card Hover & Scroll Light Trail  
+  document.querySelectorAll('.glassmorphic-card').forEach(card => {  
+    card.addEventListener('mouseenter', () => {  
+      card.style.backdropFilter = 'blur(12px)';  
+      card.style.transform = 'translateY(-4px)';  
+    });  
+    card.addEventListener('mouseleave', () => {  
+      card.style.backdropFilter = 'blur(8px)';  
+      card.style.transform = '';  
+    });  
+  });  
+
+  // Scroll-triggered ambient light trail (Intersection Observer)  
+  const lightTrailObserver = new IntersectionObserver(entries => {  
+    entries.forEach(entry => {  
+      if (entry.isIntersecting) {  
+        entry.target.classList.add('light-trail-active');  
+      } else {  
+        entry.target.classList.remove('light-trail-active');  
       }  
     });  
+  }, { threshold: 0.1 });  
+
+  document.querySelectorAll('.section-with-light-trail').forEach(section => {  
+    lightTrailObserver.observe(section);  
   });  
 });
