@@ -3,225 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[VENUE NAME]</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <title>Velvet Noir</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --brand-dark: #0F172A;
-      --brand-surface: #1E293B;
-      --brand-accent: #A37E58;
-      --deep-charcoal: #0D1117;
-      --burgundy: #6B46C1;
-      --warm-metallic: #D4AF37;
+      --primary-bg: #0A0A0A;
+      --surface-bg: #1A1A1A;
+      --text-main: #8B0000;
+      --text-muted: #6B6B6B;
+      --accent: #FFD700;
+    }
+    .glassmorphic {
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hover-depth {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-depth:hover {
+      transform: translateY(-4px) rotateX(8deg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+    .light-trail {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        opacity: 0.5;
+      }
     }
   </style>
 </head>
-<body class="bg-deep-charcoal text-white font-sans">
-  <!-- Age Verification Overlay -->
-  <div id="age-verification" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
-    <div class="text-center p-8 backdrop-blur-md bg-brandSurface/60 border border-white/10 rounded-xl">
-      <h2 class="text-4xl font-bold mb-4">Adults Only — 18+</h2>
-      <p class="mb-6 text-gray-300">Responsible use notice</p>
-      <div class="flex justify-center space-x-4">
-        <button class="px-6 py-3 bg-brandAccent text-white rounded-lg hover:bg-opacity-90 transition">Enter Website</button>
-        <button class="px-6 py-3 border border-white/20 text-white rounded-lg hover:border-brandAccent transition">Exit</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 backdrop-blur-md bg-brandDark/80 border-b border-white/10 z-50">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold text-brandAccent">[VENUE NAME]</a>
-      <div class="space-x-8 hidden md:flex">
-        <a href="#about" class="hover:text-brandAccent transition">About</a>
-        <a href="#services" class="hover:text-brandAccent transition">Services</a>
-        <a href="#vip" class="hover:text-brandAccent transition">VIP</a>
-        <button onclick="document.getElementById('enquiry-form').classList.remove('hidden')" class="bg-brandAccent text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition">Enquire</button>
-      </div>
-    </div>
-  </nav>
-
+<body class="bg-[var(--primary-bg)] text-[var(--text-main)]">
   <!-- Hero Section -->
-  <section id="hero" class="relative h-screen overflow-hidden">
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-      <source src="cinematic-video.mp4" type="video/mp4">
-    </video>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-    <div class="relative container mx-auto px-6 py-32 flex items-center h-full">
-      <div class="max-w-3xl text-white">
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter mb-6">Where sophistication meets discretion</h1>
-        <p class="text-xl opacity-90 mb-8">A sanctuary of elegance and privacy, designed for discerning patrons seeking unrivaled service in a discreet environment.</p>
-        <div class="flex space-x-4">
-          <a href="#services" class="px-6 py-3 bg-brandAccent text-white rounded-lg hover:bg-opacity-90 transition">Explore Services</a>
-          <button onclick="document.getElementById('enquiry-form').classList.remove('hidden')" class="px-6 py-3 border border-white/20 text-white rounded-lg hover:border-brandAccent transition">Make an Enquiry</button>
-        </div>
+  <header id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10"></div>
+    <img src="https://picsum.photos/seed/velvetnoir/1920/1080" alt="Velvet Noir Hero" class="w-full h-full object-cover absolute top-0 left-0 z-0" />
+    <div class="container relative z-20 text-center px-4">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">Where discretion meets desire</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto mb-8">Experience curated intimacy in the heart of [CITY]. Explore our services or inquire about private reservations.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button data-action="explore" class="px-6 py-3 bg-[var(--accent)] text-black font-bold rounded-full hover:scale-105 transition-transform">Explore Services</button>
+        <button data-action="reserve" class="px-6 py-3 border border-[var(--accent)] text-[var(--accent)] font-bold rounded-full hover:bg-[var(--accent)] hover:text-black transition-colors">Reserve Now</button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- About Venue -->
-  <section id="about" class="py-24 bg-deep-charcoal">
-    <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold mb-12">About [VENUE NAME]</h2>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="mb-8 text-lg opacity-90">A sanctuary of elegance and privacy, designed for discerning patrons seeking unrivaled service in a discreet environment.</p>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center"><span class="w-2 h-2 bg-brandAccent rounded-full mr-3"></span>Private Atmosphere</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-brandAccent rounded-full mr-3"></span>Professional Service</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-brandAccent rounded-full mr-3"></span>Discreet Environment</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-brandAccent rounded-full mr-3"></span>Open 7 Days/Week</li>
-          </ul>
-          <button onclick="document.getElementById('enquiry-form').classList.remove('hidden')" class="px-6 py-3 bg-brandAccent text-white rounded-lg hover:bg-opacity-90 transition">Enquire Now</button>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <img src="image-1.jpg" alt="" class="w-full h-auto rounded-xl shadow-lg">
-          <img src="image-2.jpg" alt="" class="w-full h-auto rounded-xl shadow-lg">
-          <img src="image-3.jpg" alt="" class="w-full h-auto rounded-xl shadow-lg">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services & Pricing -->
-  <section id="services" class="py-24 bg-brandSurface/60 backdrop-blur-md border-t border-white/10">
-    <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold mb-12 text-center">Our Services</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-brandSurface/80 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <h3 class="text-xl font-semibold mb-2">Standard Service 1</h3>
-          <p class="mb-4 opacity-90">A curated experience tailored to your preferences.</p>
-          <div class="flex justify-between text-sm opacity-70">
-            <span>30 min</span>
-            <span>€250</span>
+  <!-- Core Offering Section -->
+  <section id="core_offering_or_features" class="py-20 bg-[var(--surface-bg)]">
+    <div class="container px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">Our Offerings</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Service Card -->
+        <div class="glassmorphic p-6 rounded-xl hover-depth transition-all duration-300" data-category="standard">
+          <h3 class="text-xl font-semibold mb-2">Bespoke Companionship</h3>
+          <p class="opacity-80 mb-4">Tailored experiences for discerning guests.</p>
+          <div class="flex items-center text-sm opacity-70" data-tooltip="€250–€450">
+            €250<span class="ml-1">–</span>€450
           </div>
         </div>
-        <div class="bg-brandSurface/80 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <h3 class="text-xl font-semibold mb-2">Premium Service 1</h3>
-          <p class="mb-4 opacity-90">Exclusive access to our most sought-after offerings.</p>
-          <div class="flex justify-between text-sm opacity-70">
-            <span>60 min</span>
-            <span>€450</span>
+        <!-- Premium Card -->
+        <div class="glassmorphic p-6 rounded-xl hover-depth transition-all duration-300" data-category="premium">
+          <h3 class="text-xl font-semibold mb-2">Exclusive Encounters</h3>
+          <p class="opacity-80 mb-4">Privileged access to our most coveted offerings.</p>
+          <div class="flex items-center text-sm opacity-70" data-tooltip="€600–€1,200">
+            €600<span class="ml-1">–</span>€1,200
           </div>
-          <div class="mt-2 inline-block px-3 py-1 bg-brandAccent/20 text-brandAccent rounded-full text-xs">Popular</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Providers Gallery -->
-  <section id="providers" class="py-24">
-    <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold mb-12 text-center">Our Providers</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-brandSurface/60 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <img src="provider-1.jpg" alt="" class="w-full h-48 object-cover rounded-lg mb-4">
-          <h3 class="text-xl font-semibold mb-2">Elena V.</h3>
-          <p class="mb-4 opacity-90">Specialist in bespoke experiences and refined service.</p>
-          <div class="flex justify-between text-sm opacity-70">
-            <span>Available: Mon-Fri</span>
-            <span class="text-brandAccent">Standard, Premium</span>
-          </div>
-          <button class="mt-4 px-4 py-2 border border-white/20 rounded-lg hover:border-brandAccent transition">View Profile</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIP Experience -->
-  <section id="vip" class="py-24 bg-deep-charcoal">
-    <div class="container mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-5xl font-bold mb-6">VIP Experiences</h2>
-          <p class="mb-8 opacity-90">Indulge in unparalleled privacy and exclusivity.</p>
-          <button onclick="document.getElementById('enquiry-form').classList.remove('hidden')" class="px-6 py-3 bg-brandAccent text-white rounded-lg hover:bg-opacity-90 transition">Enquire Now</button>
-        </div>
-        <div class="relative">
-          <img src="vip-background.jpg" alt="" class="w-full h-auto rounded-xl shadow-lg">
-          <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
-            <h3 class="text-2xl font-bold text-white">VIP</h3>
+        <!-- VIP Card -->
+        <div class="glassmorphic p-6 rounded-xl hover-depth transition-all duration-300" data-category="vip">
+          <h3 class="text-xl font-semibold mb-2">VIP Packages</h3>
+          <p class="opacity-80 mb-4">Customized experiences with concierge service.</p>
+          <div class="flex items-center text-sm opacity-70" data-tooltip="Custom pricing">
+            Custom Pricing
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Venue Info -->
-  <section id="info" class="py-24 bg-brandSurface/60 backdrop-blur-md border-t border-white/10">
-    <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold mb-12 text-center">Venue Information</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-brandSurface/80 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <h3 class="text-xl font-semibold mb-4">Hours</h3>
-          <p class="opacity-90">10:00 PM – 2:00 AM</p>
+  <!-- Immersive Showcase -->
+  <section id="immersive_showcase" class="py-20 overflow-x-auto no-scrollbar">
+    <div class="container px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">Step into the Experience</h2>
+      <div class="flex space-x-8 pb-8">
+        <!-- Showcase Item 1 -->
+        <div class="w-full md:w-1/3 min-w-[300px] glassmorphic p-6 rounded-xl hover-depth transition-all duration-500" data-spotlight="item1">
+          <h3 class="text-xl font-semibold mb-2">Private Lounges</h3>
+          <p class="opacity-80">Sanctuaries designed for discretion and comfort.</p>
         </div>
-        <div class="bg-brandSurface/80 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <h3 class="text-xl font-semibold mb-4">Location</h3>
-          <p class="opacity-90">123 Luxury Lane, Suite 500</p>
+        <!-- Showcase Item 2 -->
+        <div class="w-full md:w-1/3 min-w-[300px] glassmorphic p-6 rounded-xl hover-depth transition-all duration-500" data-spotlight="item2">
+          <h3 class="text-xl font-semibold mb-2">Bespoke Service</h3>
+          <p class="opacity-80">Tailored to your every need and desire.</p>
         </div>
-        <div class="bg-brandSurface/80 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <h3 class="text-xl font-semibold mb-4">Contact</h3>
-          <p class="opacity-90"><a href="tel:+18001234567" class="hover:text-brandAccent">+1 (800) 123-4567</a></p>
-          <p class="opacity-90 mt-2"><a href="mailto:info@venue.com" class="hover:text-brandAccent">info@venue.com</a></p>
-        </div>
-      </div>
-      <div class="mt-12 grid md:grid-cols-2 gap-8">
-        <div class="bg-brandSurface/80 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-brandAccent transition">
-          <h3 class="text-xl font-semibold mb-4">Rules</h3>
-          <ul class="space-y-2 opacity-90">
-            <li>• Age requirement: 18+</li>
-            <li>• Discretion guaranteed</li>
-          </ul>
+        <!-- Showcase Item 3 -->
+        <div class="w-full md:w-1/3 min-w-[300px] glassmorphic p-6 rounded-xl hover-depth transition-all duration-500" data-spotlight="item3">
+          <h3 class="text-xl font-semibold mb-2">Modern Indulgence</h3>
+          <p class="opacity-80">Redefining luxury in the heart of [CITY].</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Enquiry Form Modal -->
-  <div id="enquiry-form" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
-    <div class="bg-brandSurface/60 backdrop-blur-md border border-white/10 rounded-xl p-8 w-full max-w-lg">
-      <h3 class="text-2xl font-bold mb-4">Enquire Now</h3>
-      <form class="space-y-4">
-        <input type="text" placeholder="Name/Preferred Name" required class="w-full px-4 py-2 bg-brandSurface/80 border border-white/10 rounded-lg focus:outline-none focus:border-brandAccent transition">
-        <select required class="w-full px-4 py-2 bg-brandSurface/80 border border-white/10 rounded-lg focus:outline-none focus:border-brandAccent transition">
-          <option value="">Select Contact Method</option>
-          <option>Phone</option>
-          <option>Email</option>
-        </select>
-        <input type="date" required class="w-full px-4 py-2 bg-brandSurface/80 border border-white/10 rounded-lg focus:outline-none focus:border-brandAccent transition">
-        <select required class="w-full px-4 py-2 bg-brandSurface/80 border border-white/10 rounded-lg focus:outline-none focus:border-brandAccent transition">
-          <option value="">Select Service Category</option>
-          <option>Standard</option>
-          <option>Premium</option>
-        </select>
-        <button type="submit" class="w-full px-6 py-3 bg-brandAccent text-white rounded-lg hover:bg-opacity-90 transition">Submit Enquiry</button>
-      </form>
+  <!-- Conversion Section -->
+  <section id="conversion_or_contact" class="py-20 bg-[var(--surface-bg)]">
+    <div class="container px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Reserve Your Experience</h2>
+      <p class="opacity-80 max-w-xl mx-auto mb-10">We respect your privacy. Please provide your preferred name, contact method, and desired service category to initiate a discreet inquiry.</p>
+      <div class="glassmorphic p-8 rounded-xl max-w-md mx-auto relative" data-form="reservation">
+        <form id="reservationForm" class="space-y-4">
+          <input type="text" placeholder="Preferred Name" required class="w-full px-4 py-2 bg-transparent border-b border-[var(--text-muted)] focus:outline-none" />
+          <input type="email" placeholder="Email Address" required class="w-full px-4 py-2 bg-transparent border-b border-[var(--text-muted)] focus:outline-none" />
+          <select required class="w-full px-4 py-2 bg-transparent border-b border-[var(--text-muted)] focus:outline-none">
+            <option value="">Select Service Category</option>
+            <option value="standard">Bespoke Companionship</option>
+            <option value="premium">Exclusive Encounters</option>
+            <option value="vip">VIP Packages</option>
+          </select>
+          <button type="submit" class="w-full py-3 bg-[var(--accent)] text-black font-bold rounded-full hover:scale-105 transition-transform">Submit Inquiry</button>
+        </form>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-deep-charcoal border-t border-white/10">
-    <div class="container mx-auto px-6 py-12">
-      <div class="flex flex-col md:flex-row justify-between">
-        <a href="#" class="text-2xl font-bold text-brandAccent mb-8 md:mb-0">[VENUE NAME]</a>
-        <nav class="space-y-4 md:space-y-0 md:space-x-6">
-          <a href="#hero" class="hover:text-brandAccent transition">Home</a>
-          <a href="#about" class="hover:text-brandAccent transition">Services</a>
-          <a href="#about" class="hover:text-brandAccent transition">About</a>
-          <a href="#info" class="hover:text-brandAccent transition">Contact</a>
-        </nav>
-      </div>
-      <div class="mt-8 pt-8 border-t border-white/10">
-        <p class="text-sm opacity-70 text-center">© 2023 [VENUE NAME]. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-          <a href="#" class="hover:text-brandAccent transition">Privacy Policy</a>
-          <a href="#" class="hover:text-brandAccent transition">Terms of Service</a>
-          <a href="#" class="hover:text-brandAccent transition">Responsible Use Notice</a>
-        </div>
-      </div>
+  <footer class="py-8 bg-[var(--primary-bg)]">
+    <div class="container px-4 text-center opacity-70">
+      <p>&copy; 2023 Velvet Noir. All rights reserved.</p>
     </div>
   </footer>
 </body>
