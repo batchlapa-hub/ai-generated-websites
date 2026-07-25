@@ -1,1 +1,38 @@
-{"javascript":"// JS code\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  // Smooth scrolling for anchor links\n  document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {\n    anchor.addEventListener('click', function (e) {\n      e.preventDefault();\n      \n      const targetId = this.getAttribute('href');\n      const targetElement = document.querySelector(targetId);\n      \n      if (targetElement) {\n        targetElement.scrollIntoView({\n          behavior: 'smooth',\n          block: 'start'\n        });\n      }\n    });\n  });\n\n  // Modal toggle functionality\n  document.querySelectorAll('[data-toggle=\"modal\"]').forEach(button => {\n    button.addEventListener('click', () => {\n      const modalId = button.getAttribute('data-target');\n      const modal = document.querySelector(modalId);\n      \n      if (modal) {\n        modal.classList.toggle('is-active');\n        document.body.classList.toggle('modal-open');\n      }\n    });\n  });\n\n  // Close modal when clicking outside content\n  document.addEventListener('click', (e) => {\n    if (e.target.classList.contains('modal')) {\n      e.target.classList.remove('is-active');\n      document.body.classList.remove('modal-open');\n    }\n  });\n\n  // Tabbed interface handler\n  document.querySelectorAll('[data-tabs]').forEach(container => {\n    const tabs = container.querySelectorAll('[role=\"tab\"]');\n    const panels = container.querySelectorAll('[role=\"tabpanel\"]');\n    \n    tabs.forEach(tab => {\n      tab.addEventListener('click', () => {\n        const targetPanelId = tab.getAttribute('aria-controls');\n        const targetPanel = document.querySelector(`[id=\"${targetPanelId}\"]`);\n        \n        // Deselect all tabs\n        tabs.forEach(t => t.classList.remove('is-active'));\n        panels.forEach(p => p.classList.remove('is-active'));\n        \n        // Select clicked tab and corresponding panel\n        tab.classList.add('is-active');\n        targetPanel.classList.add('is-active');\n      });\n    });\n  });\n});"}
+const init = () => {  
+  const form = document.getElementById('contactForm');  
+  const emailInput = document.getElementById('email');  
+  const messageContainer = document.getElementById('message');  
+  const toggleBtn = document.getElementById('toggleBtn');  
+  const contentBox = document.getElementById('contentBox');  
+
+  // Form validation  
+  form.addEventListener('submit', (e) => {  
+    e.preventDefault();  
+    if (validateEmail(emailInput.value)) {  
+      messageContainer.textContent = 'Form submitted successfully!';  
+      messageContainer.style.color = 'green';  
+    } else {  
+      messageContainer.textContent = 'Please enter a valid email address';  
+      messageContainer.style.color = 'red';  
+    }  
+  });  
+
+  // Real-time email validation  
+  emailInput.addEventListener('input', () => {  
+    const isValid = validateEmail(emailInput.value);  
+    emailInput.classList.toggle('invalid', !isValid);  
+  });  
+
+  // Dynamic content toggle  
+  toggleBtn.addEventListener('click', () => {  
+    contentBox.textContent = contentBox.textContent === 'Hidden Content' ? 'Visible Content' : 'Hidden Content';  
+  });  
+
+  // Utility function for email validation  
+  function validateEmail(email) {  
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
+    return re.test(String(email).toLowerCase());  
+  }  
+};  
+
+document.addEventListener('DOMContentLoaded', init);
