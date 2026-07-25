@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Sitemap: https://velvetnoir.example/sitemap.xml
