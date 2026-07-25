@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --brand-dark: #0A0B10;
+      --brand-surface: #121318;
+      --brand-accent: #A37E58;
+      --text-primary: #F8F9FA;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 backdrop-blur-md bg-brandDark/80 border-b border-white/10 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold text-brandAccent">Luxury</div>
+      <div class="space-x-8 hidden md:flex">
+        <a href="#" class="hover:text-brandAccent transition-colors">Services</a>
+        <a href="#" class="hover:text-brandAccent transition-colors">Portfolio</a>
+        <a href="#" class="hover:text-brandAccent transition-colors">Specs</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative h-screen overflow-hidden">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+      <source src="https://www.pexels.com/video/2589763/" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+    <div class="relative container mx-auto px-6 py-16 md:py-32 flex flex-col justify-center h-full text-center">
+      <h1 class="text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter text-white mb-4">Where Sophistication Meets Discretion</h1>
+      <p class="text-brandAccent font-mono text-xs uppercase tracking-widest mb-8">A sanctuary of refined indulgence and professional service</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="bg-white/20 backdrop-blur-md border border-white/30 px-6 py-3 rounded-xl text-white font-medium hover:bg-white/30 transition-all duration-500">Explore Services</button>
+        <button class="bg-gradient-to-r from-brandAccent to-black px-6 py-3 rounded-xl text-white font-medium shadow-lg hover:shadow-xl transition-all duration-500">Make an Enquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="py-20 bg-brandSurface/60 backdrop-blur-md border-t border-white/10">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16">Our Services</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Panel -->
+        <div class="space-y-8">
+          <h3 class="text-xl font-semibold text-brandAccent">Service Category 1: Standard Services</h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between"><span>30 min</span><span>€250</span></li>
+            <li class="flex justify-between"><span>60 min</span><span>€400</span></li>
+          </ul>
+        </div>
+        <!-- Right Panel -->
+        <div class="space-y-8">
+          <h3 class="text-xl font-semibold text-brandAccent">Service Category 2: Premium Experiences</h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between"><span>90 min</span><span>€750</span></li>
+            <li class="flex justify-between"><span>120 min</span><span>€1,200</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spec Matrix -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16">Technical Specifications</h2>
+      <div class="bg-brandSurface/60 backdrop-blur-md border border-white/10 rounded-2xl p-8">
+        <div class="flex flex-col md:flex-row gap-4">
+          <button class="px-4 py-2 bg-brandAccent text-black font-bold rounded-lg">Uw Values</button>
+          <button class="px-4 py-2 border border-white/30 hover:bg-white/10 rounded-lg">Materials</button>
+        </div>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-black/50 backdrop-blur-sm p-4 rounded-xl">
+            <p class="text-xs text-white/70 mb-2">Frame Depth</p>
+            <p class="font-mono text-brandAccent">85mm</p>
+          </div>
+          <div class="bg-black/50 backdrop-blur-sm p-4 rounded-xl">
+            <p class="text-xs text-white/70 mb-2">Acoustic Insulation</p>
+            <p class="font-mono text-brandAccent">Class A</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Modal -->
+  <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="fixed bottom-8 right-8 bg-gradient-to-r from-brandAccent to-black px-6 py-3 rounded-xl text-white font-medium shadow-lg hover:shadow-xl transition-all duration-500">Request Quote</button>
+  <div id="contact-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+    <div class="bg-brandSurface/60 backdrop-blur-md border border-white/10 rounded-2xl w-full max-w-lg p-8 text-center">
+      <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+      <p class="mb-6 text-white/70">Let us know how we can assist you with your luxury needs.</p>
+      <button class="bg-brandAccent px-6 py-2 rounded-lg hover:bg-black transition-colors">Submit Request</button>
+    </div>
+  </div>
+</body>
+</html>
