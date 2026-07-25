@@ -1,71 +1,66 @@
-(function() {
-  document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
-    const menuButton = document.querySelector('[data-menu-toggle]');
-    const mobileMenu = document.querySelector('[data-mobile-menu]');
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        menuButton.setAttribute(
-          'aria-expanded',
-          mobileMenu.classList.contains('active')
-        );
-        document.body.classList.toggle('menu-open');
-      });
-    }
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
     });
+  }
 
-    // Form validation
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', function(e) {
-        let isValid = true;
-        
-        // Check required fields
-        const requiredFields = this.querySelectorAll('[required]');
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
-            isValid = false;
-            field.classList.add('error');
-          }
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
         });
-
-        if (!isValid) {
-          e.preventDefault();
-          alert('Please fill out all required fields.');
-        }
-      });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-      const isMenuButton = e.target.closest('[data-menu-toggle]');
-      const isMenuContent = e.target.closest('[data-mobile-menu]');
-
-      if (!isMenuButton && !isMenuContent) {
-        const activeMenu = document.querySelector('[data-mobile-menu].active');
-        if (activeMenu) {
-          activeMenu.classList.remove('active');
-          document.body.classList.remove('menu-open');
-          menuButton.setAttribute('aria-expanded', 'false');
-        }
       }
     });
   });
-})();
+
+  // Form validation
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const nameInput = this.querySelector('[name="name"]');
+      const emailInput = this.querySelector('[name="email"]');
+
+      // Name validation
+      if (!nameInput.value.trim()) {
+        alert('Name is required');
+        valid = false;
+      }
+
+      // Email validation
+      if (emailInput && !isValidEmail(emailInput.value)) {
+        alert('Valid email is required');
+        valid = false;
+      }
+
+      if (valid) {
+        this.submit();
+      }
+    });
+  }
+
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  // Lazy loading images
+  document.querySelectorAll('img').forEach(img => {
+    if (img.src && img.src.includes('data:image')) {
+      img.loading = 'lazy';
+    }
+  });
+});
