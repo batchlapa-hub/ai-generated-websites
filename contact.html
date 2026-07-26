@@ -3,69 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato | Coisas da Carla</title>
-  <meta name="description" content="Onde o cuidado e a arte se encontram em cada detalhe">
+  <title>Contact | ElectraHub</title>
+  <meta name="description" content="Innovative Tech for Your Connected Life">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
-  <style>:root{--pattern-bg:url("data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%2032%2032%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpath%20d%3D%27M0%200h16v16H0z%27%20fill%3D%27%23f5f5f5%27%2F%3E%3Cpath%20d%3D%27M16%200h16v16h-16z%27%20fill%3D%27%23eaeaea%27%2F%3E%3Cpath%20d%3D%27M0%2016h16v16H0z%27%20fill%3D%27%23dcdcdc%27%2F%3E%3C%2Fsvg%3E");}</style>
+  <style>:root{--pattern-bg:url("data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%2016%2016%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpath%20d%3D%27M0%200h8v8H0z%27%20fill%3D%27%23F97316%27%2F%3E%3Cpath%20d%3D%27M8%200h8v8h-8z%27%20fill%3D%27%23E5E7EB%27%2F%3E%3Cpath%20d%3D%27M0%208h8v8H0z%27%20fill%3D%27%23D1D5DB%27%2F%3E%3C%2Fsvg%3E");}</style>
 </head>
 <body class="mode-light">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Coisas da Carla"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><text x='0' y='30' font-family='sans-serif' font-size='24' fill='#8e24aa'>Coisas da Carla</text></svg></a>
+      <a href="index.html" class="site-logo" aria-label="ElectraHub"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h160v40H0z' fill='none'/><text x='8' y='25' font-family='sans-serif' font-weight='bold' fill='#2B3A4A' letter-spacing='.5em'>ELECTRA HUB</text></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
-      <a href="index.html">Início</a>
-      <a href="services.html">Serviços</a>
-      <a href="gallery.html">Galeria</a>
-      <a href="contact.html">Contato</a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section-cta_banner">
-  <h2>Horários e Localização</h2>
-  <p>Funcionamos de terça a domingo, das 10h às 22h. Endereço: Rua dos Sonhos, 456 - Centro Histórico, São Paulo.</p>
-  <a href="https://www.google.com/maps" target="_blank">Veja no Google Maps</a>
+    <section class="section-contact_form">
+  <h2>Contact Us</h2>
+  <p>Have questions about products, services, or store locations? We're here to help!</p>
+  <form aria-label="Contact Form">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject">
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message"></textarea>
+    </div>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
-<section class="section-contact_form">
-  <p>Preencha o formulário para agendar seu serviço ou tirar dúvidas:</p>
-  <form>
-    <label for="name">Nome</label>
-    <input type="text" id="name" placeholder="Seu nome completo">
-    
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="exemplo@dominio.com">
-    
-    <label for="phone">Telefone</label>
-    <input type="tel" id="phone" placeholder="(xx) xxxx-xxxx">
-    
-    <label for="date">Data Desejada</label>
-    <input type="text" id="date" placeholder="DD/MM/AAAA">
-    
-    <label for="service">Serviço de interesse</label>
-    <input type="text" id="service" placeholder="Cozinha, Massagem, Corte de Cabelo ou Sexo do Bom">
-    
-    <label for="message">Mensagem</label>
-    <textarea id="message" placeholder="Como podemos ajudar?"></textarea>
-    
-    <button type="submit">Enviar</button>
-  </form>
+<section class="section-store_locator">
+  <h2>Find a Retail Location Near You</h2>
+  <p>200+ stores across North America, Europe, and Asia</p>
+  <div id="map" style="height: 300px; width: 100%; background-color: #f0f0f0;"></div>
+  <!-- Removed broken link to store-locator.html -->
 </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Coisas da Carla. All rights reserved.</p>
+      <p>&copy; 2026 ElectraHub. All rights reserved.</p>
       <nav class="footer-nav">
-      <a href="index.html">Início</a>
-      <a href="services.html">Serviços</a>
-      <a href="gallery.html">Galeria</a>
-      <a href="contact.html">Contato</a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
       </nav>
     </div>
   </footer>
