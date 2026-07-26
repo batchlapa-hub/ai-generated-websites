@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Aura Fit</title>
+  <title>Contact & Booking | Aura Fit</title>
   <meta name="description" content="Elevate Your Wellness Journey">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
-  <style>:root{--pattern-bg:url("data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%2032%2032%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpath%20d%3D%27M0%200h16v16H0z%27%20fill%3D%27currentColor%27%2F%3E%3Cpath%20d%3D%27M16%200h16v16h-16z%27%20fill%3D%27currentColor%27%2F%3E%3Cpath%20d%3D%27M0%2016h16v16H0z%27%20fill%3D%27currentColor%27%2F%3E%3C%2Fsvg%3E");}</style>
+  <style>:root{--pattern-bg:url("data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%2032%2032%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpath%20d%3D%27M16%200L0%2016h16v16l16-16H16z%27%20fill%3D%27none%27%2F%3E%3Ccircle%20cx%3D%278%27%20cy%3D%278%27%20r%3D%272%27%20fill%3D%27currentColor%27%2F%3E%3Ccircle%20cx%3D%2724%27%20cy%3D%2724%27%20r%3D%272%27%20fill%3D%27currentColor%27%2F%3E%3C%2Fsvg%3E");}</style>
 </head>
 <body class="mode-light">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Aura Fit"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h160v40H0z' fill='none'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='central' font-family='sans-serif' font-size='28'>Aura Fit</text></svg></a>
+      <a href="index.html" class="site-logo" aria-label="Aura Fit"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h160v40H0z' fill='none'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='central' font-size='28' fill='currentColor'>Aura Fit</text></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -20,42 +20,58 @@
       <a href="index.html">Home</a>
       <a href="classes.html">Classes</a>
       <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section-contact_form">
-  <h2>Ready to Transform Your Wellness Journey?</h2>
-  <form>
-    <label for="full-name">Full Name</label>
-    <input type="text" id="full-name" name="full-name" required>
-    
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" required>
-    
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone">
-    
-    <label for="message">Message</label>
-    <textarea id="message" name="message"></textarea>
-    
-    <button type="submit">Send Message</button>
-  </form>
+    <section class="section-team">
+  <h2>Meet Our Expert Trainers</h2>
+  <div class="team-members">
+    <article class="team-member">
+      <h3>Sarah Chen</h3>
+      <p><strong>Head Strength Coach (NSCA-CSCS)</strong></p>
+      <p>Former collegiate athlete with 15+ years in sports performance training - helped clients achieve 20% muscle gain averages</p>
+    </article>
+    <article class="team-member">
+      <h3>Raj Patel</h3>
+      <p><strong>Yoga & Mobility Specialist (RYT-500)</strong></p>
+      <p>Certified physiotherapist who developed our restorative flow program reducing client injury rates by 40%</p>
+    </article>
+  </div>
 </section>
 
 <section class="section-faq">
   <h2>Common Questions</h2>
-  <div>
-    <h3>Can I cancel my membership at any time?</h3>
-    <p>Yes, with a 30-day written notice. We offer prorated refunds for unused months.</p>
-  </div>
-  <div>
-    <h3>Are there age restrictions for classes?</h3>
-    <p>Our programs are designed for adults aged 18+. Special teen classes available for ages 14-17.</p>
-  </div>
+  <ul class="faq-list">
+    <li>
+      <strong>Can I change my class time?</strong>
+      <p>Yes, we offer free rescheduling up to 2 hours before your booked session</p>
+    </li>
+    <li>
+      <strong>What's your cancellation policy?</strong>
+      <p>24-hour notice required for refunds; no-shows are charged 50% of the class fee</p>
+    </li>
+  </ul>
+</section>
+
+<section class="section-contact_form">
+  <p>Book Your Next Class or Ask Questions</p>
+  <form>
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="John Doe">
+    
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="john@example.com">
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+    
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="How can we assist you today?"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
   </main>
 
@@ -66,7 +82,6 @@
       <a href="index.html">Home</a>
       <a href="classes.html">Classes</a>
       <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       </nav>
     </div>
