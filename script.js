@@ -37,7 +37,7 @@
 
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 60,
+            top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
         }
@@ -53,43 +53,37 @@
 
         let isValid = true;
 
-        // Reset previous errors
-        document.querySelectorAll('.section-contact_form .error').forEach(el => el.remove());
+        // Reset error messages
+        document.querySelectorAll('.section-contact_form .error').forEach(el => el.textContent = '');
 
-        // Validate name
+        // Validate name field
         const nameField = contactForm.querySelector('[name="name"]');
         if (!nameField.value.trim()) {
-          showError(nameField, 'Name is required');
           isValid = false;
+          nameField.nextElementSibling.textContent = 'Name is required';
         }
 
-        // Validate email
+        // Validate email field
         const emailField = contactForm.querySelector('[name="email"]');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailField.value.trim() || !emailRegex.test(emailField.value)) {
-          showError(emailField, 'Valid email is required');
           isValid = false;
+          emailField.nextElementSibling.textContent = 'Valid email is required';
         }
 
-        // Validate message
+        // Validate message field
         const messageField = contactForm.querySelector('[name="message"]');
         if (!messageField.value.trim()) {
-          showError(messageField, 'Message is required');
           isValid = false;
+          messageField.nextElementSibling.textContent = 'Message is required';
         }
 
         if (isValid) {
-          // Replace form with confirmation message
-          contactForm.innerHTML = '<p class="success">Thank you! Your message has been sent.</p>';
+          // Show confirmation message
+          const formContainer = contactForm.closest('.section-contact_form');
+          formContainer.innerHTML = '<p>Thank you for your message! We will get back to you soon.</p>';
         }
       });
-    }
-
-    function showError(field, message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'error';
-      errorDiv.textContent = message;
-      field.parentNode.appendChild(errorDiv);
     }
   });
 })();
