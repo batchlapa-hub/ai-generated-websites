@@ -1,23 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <url>
-    <loc>https://coisasdacarla.com/index.html</loc>
+    <loc>https://www.electrahub.com/</loc>
     <lastmod>2023-10-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://coisasdacarla.com/services.html</loc>
+    <loc>https://www.electrahub.com/shop.html</loc>
     <lastmod>2023-10-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://coisasdacarla.com/gallery.html</loc>
+    <loc>https://www.electrahub.com/services.html</loc>
     <lastmod>2023-10-01</lastmod>
-    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://coisasdacarla.com/contact.html</loc>
+    <loc>https://www.electrahub.com/about.html</loc>
     <lastmod>2023-10-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.electrahub.com/contact.html</loc>
+    <lastmod>2023-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.electrahub.com/blog.html</loc>
+    <lastmod>2023-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
