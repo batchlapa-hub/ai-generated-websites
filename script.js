@@ -18,16 +18,24 @@
     const revealElements = document.querySelectorAll('[data-reveal]');
 
     if (revealElements.length > 0) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observerCallback = function(entries, observer) {
+        entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
+      };
 
-      revealElements.forEach(el => observer.observe(el));
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      revealElements.forEach(function(element) {
+        observer.observe(element);
+      });
     }
 
     // Smooth scroll for in-page anchor links
@@ -40,14 +48,14 @@
 
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 60,
-            behavior: 'smooth'
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth',
           });
         }
       });
     });
 
-    // Contact form validation
+    // Contact form validation and submission
     const contactForm = document.querySelector('.section-contact_form form');
 
     if (contactForm) {
@@ -56,34 +64,28 @@
 
         let isValid = true;
 
-        // Reset error messages
-        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+        // Reset previous errors
+        document.querySelectorAll('.section-contact_form .error').forEach(el => {
+          el.textContent = '';
+        });
 
-        // Validate name
-        const nameInput = this.querySelector('[name="name"]');
-        if (!nameInput.value.trim()) {
+        const nameField = contactForm.querySelector('[name="name"]');
+        const emailField = contactForm.querySelector('[name="email"]');
+
+        if (!nameField.value.trim()) {
           isValid = false;
-          nameInput.nextElementSibling.textContent = 'Name is required';
+          nameField.nextElementSibling.textContent = 'Name is required';
         }
 
-        // Validate email
-        const emailInput = this.querySelector('[name="email"]');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+        if (!emailField.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
           isValid = false;
-          emailInput.nextElementSibling.textContent = 'Valid email is required';
-        }
-
-        // Validate message
-        const messageInput = this.querySelector('[name="message"]');
-        if (!messageInput.value.trim()) {
-          isValid = false;
-          messageInput.nextElementSibling.textContent = 'Message is required';
+          emailField.nextElementSibling.textContent = 'Valid email is required';
         }
 
         if (isValid) {
-          // Replace form with confirmation message
-          contactForm.innerHTML = '<p>Thank you! Your message has been sent.</p>';
+          // Replace form with success message
+          contactForm.innerHTML =
+            '<p class="success">Thank you! Your message has been sent.</p>';
         }
       });
     }
