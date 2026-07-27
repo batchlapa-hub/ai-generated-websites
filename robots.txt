@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Sitemap: https://www.vineandtable.com/sitemap.xml
+Disallow: /private/
+Sitemap: https://www.example.com/sitemap.xml
