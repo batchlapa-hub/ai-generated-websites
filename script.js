@@ -1,88 +1,114 @@
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const siteNav = document.getElementById('site-nav');
-
-    if (navToggle && siteNav) {
-      navToggle.addEventListener('click', function() {
-        siteNav.classList.toggle('is-open');
-        this.setAttribute('aria-expanded', siteNav.classList.contains('is-open'));
-      });
-    }
-
-    // Scroll-reveal with IntersectionObserver
-    const revealElements = document.querySelectorAll('[data-reveal]');
-
-    if (revealElements.length) {
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      revealElements.forEach(el => observer.observe(el));
-    }
-
-    // Smooth scroll for in-page anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 70,
-            behavior: 'smooth'
-          });
-        }
-      });
+document.addEventListener('DOMContentLoaded', function () {
+  // ---- Mobile nav toggle ----
+  var navToggle = document.querySelector('.nav-toggle');
+  var siteNav = document.getElementById('site-nav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = siteNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+  }
 
-    // Contact form handling
-    const contactForm = document.querySelector('.section-contact_form form');
-
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let isValid = true;
-
-        // Reset previous errors
-        this.querySelectorAll('.error-message').forEach(el => el.remove());
-
-        // Validate required fields
-        const requiredFields = this.querySelectorAll('[required]');
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
-            isValid = false;
-            const error = document.createElement('div');
-            error.className = 'error-message';
-            error.textContent = 'This field is required.';
-            field.parentNode.appendChild(error);
-          }
-        });
-
-        // Validate email format
-        const emailField = this.querySelector('[type="email"]');
-        if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-          isValid = false;
-          const error = document.createElement('div');
-          error.className = 'error-message';
-          error.textContent = 'Please enter a valid email address.';
-          emailField.parentNode.appendChild(error);
-        }
-
-        if (isValid) {
-          // Show confirmation message
-          this.innerHTML = '<p class="form-success">Thank you! Your message has been sent.</p>';
+  // ---- Scroll reveal ----
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
       });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  // ---- Contact form validation (static site, no backend -- wire a real
+  // endpoint like Formspree or Netlify Forms into the form's action/fetch call
+  // when one is available) ----
+  var contactForm = document.querySelector('.section-contact_form form');
+  if (contactForm) {
+    var fields = {
+      name: contactForm.querySelector('[name="name"]'),
+      email: contactForm.querySelector('[name="email"]'),
+      message: contactForm.querySelector('[name="message"]')
+    };
+
+    function setError(fieldName, message) {
+      var input = fields[fieldName];
+      var errorEl = contactForm.querySelector('[data-error-for="' + fieldName + '"]');
+      if (errorEl) errorEl.textContent = message || '';
+      if (input) input.classList.toggle('is-invalid', !!message);
     }
-  });
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      if (fields.name && !fields.name.value.trim()) {
+        setError('name', 'Please enter your name.');
+        valid = false;
+      } else {
+        setError('name', '');
+      }
+
+      if (fields.email && !isValidEmail(fields.email.value.trim())) {
+        setError('email', 'Please enter a valid email address.');
+        valid = false;
+      } else {
+        setError('email', '');
+      }
+
+      if (fields.message && !fields.message.value.trim()) {
+        setError('message', 'Please enter a message.');
+        valid = false;
+      } else {
+        setError('message', '');
+      }
+
+      if (!valid) return;
+
+      var successEl = document.createElement('div');
+      successEl.className = 'form-success';
+      successEl.setAttribute('role', 'status');
+      successEl.textContent = "Thanks! Your message has been received -- we'll be in touch soon.";
+      contactForm.replaceWith(successEl);
+    });
+  }
+});
+
+
+/* ---- Optional enhancements ---- */
+(function() {
+    // Check if there are multiple testimonials and add autoplay functionality
+    const testimonialGrid = document.querySelector('.testimonial-grid');
+    if (testimonialGrid && testimonialGrid.children.length >= 3) {
+        let currentIndex = 0;
+        setInterval(() => {
+            const items = Array.from(testimonialGrid.children);
+            items[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % items.length;
+            items[currentIndex].classList.add('active');
+        }, 5000);
+    }
+
+    // Ensure only one FAQ item is open at a time
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.querySelector('details').open) {
+                        otherItem.querySelector('details').click();
+                    }
+                });
+            });
+        });
+    }
 })();
