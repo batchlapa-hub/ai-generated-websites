@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Sitemap: https://www.voltisengineering.com/sitemap.xml
+Sitemap: https://www.vineandtable.com/sitemap.xml
