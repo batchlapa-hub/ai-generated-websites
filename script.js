@@ -7,7 +7,7 @@
     if (navToggle && siteNav) {
       navToggle.addEventListener('click', function() {
         siteNav.classList.toggle('is-open');
-        this.setAttribute('aria-expanded', siteNav.classList.contains('is-open'));
+        navToggle.setAttribute('aria-expanded', siteNav.classList.contains('is-open'));
       });
     }
 
@@ -37,7 +37,7 @@
 
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 70,
+            top: targetElement.offsetTop - 60,
             behavior: 'smooth'
           });
         }
@@ -54,41 +54,45 @@
         let isValid = true;
 
         // Reset previous errors
-        this.querySelectorAll('.error-message').forEach(el => el.remove());
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
 
-        // Validate name field
-        const nameField = this.querySelector('[name="name"]');
-        if (!nameField.value.trim()) {
-          showError(nameField, 'Name is required');
+        // Validate name
+        const nameInput = this.querySelector('[name="name"]');
+        if (!nameInput.value.trim()) {
+          showError(nameInput, 'Name is required');
           isValid = false;
         }
 
-        // Validate email field
-        const emailField = this.querySelector('[name="email"]');
+        // Validate email
+        const emailInput = this.querySelector('[name="email"]');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailField.value.trim() || !emailRegex.test(emailField.value)) {
-          showError(emailField, 'Valid email is required');
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+          showError(emailInput, 'Valid email is required');
           isValid = false;
         }
 
-        // Validate message field
-        const messageField = this.querySelector('[name="message"]');
-        if (!messageField.value.trim()) {
-          showError(messageField, 'Message is required');
+        // Validate message
+        const messageInput = this.querySelector('[name="message"]');
+        if (!messageInput.value.trim()) {
+          showError(messageInput, 'Message is required');
           isValid = false;
         }
 
         if (isValid) {
-          // Replace form with confirmation message
-          this.innerHTML = '<p>Thank you! Your message has been sent.</p>';
+          // Replace form with success message
+          const formContainer = this.closest('.section-contact_form');
+          formContainer.innerHTML = '<p class="success-message">Thank you! Your message has been sent.</p>';
         }
       });
+    }
 
-      function showError(field, message) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.textContent = message;
-        field.parentNode.appendChild(errorDiv);
+    function showError(input, message) {
+      let errorElement = input.nextElementSibling;
+      if (!errorElement || !errorElement.classList.contains('error-message')) {
+        errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        input.parentNode.appendChild(errorElement);
       }
     }
   });
