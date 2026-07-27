@@ -7,7 +7,10 @@
     if (navToggle && siteNav) {
       navToggle.addEventListener('click', function() {
         siteNav.classList.toggle('is-open');
-        navToggle.setAttribute('aria-expanded', siteNav.classList.contains('is-open'));
+        navToggle.setAttribute(
+          'aria-expanded',
+          siteNav.classList.contains('is-open')
+        );
       });
     }
 
@@ -15,7 +18,7 @@
     const revealElements = document.querySelectorAll('[data-reveal]');
 
     if (revealElements.length > 0) {
-      const observer = new IntersectionObserver((entries, observer) => {
+      const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
@@ -37,7 +40,7 @@
 
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: targetElement.offsetTop - 60,
             behavior: 'smooth'
           });
         }
@@ -60,24 +63,26 @@
         const requiredFields = this.querySelectorAll('[required]');
         requiredFields.forEach(field => {
           if (!field.value.trim()) {
-            const errorEl = field.nextElementSibling;
-            if (errorEl && errorEl.classList.contains('error-message')) {
-              errorEl.textContent = 'This field is required.';
-              isValid = false;
-            }
+            field.classList.add('invalid');
+            const errorMsg = field.nextElementSibling;
+            if (errorMsg) errorMsg.textContent = 'This field is required.';
+            isValid = false;
+          } else {
+            field.classList.remove('invalid');
           }
         });
 
         // Validate email format
         const emailField = this.querySelector('input[type="email"]');
-        if (emailField) {
+        if (emailField && emailField.value.trim()) {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(emailField.value.trim())) {
-            const errorEl = emailField.nextElementSibling;
-            if (errorEl && errorEl.classList.contains('error-message')) {
-              errorEl.textContent = 'Please enter a valid email address.';
-              isValid = false;
-            }
+          if (!emailRegex.test(emailField.value)) {
+            emailField.classList.add('invalid');
+            const errorMsg = emailField.nextElementSibling;
+            if (errorMsg) errorMsg.textContent = 'Please enter a valid email address.';
+            isValid = false;
+          } else {
+            emailField.classList.remove('invalid');
           }
         }
 
@@ -86,7 +91,8 @@
           this.style.display = 'none';
           const confirmationMessage = document.createElement('div');
           confirmationMessage.className = 'form-confirmation';
-          confirmationMessage.textContent = 'Thank you! Your message has been sent.';
+          confirmationMessage.textContent =
+            'Thank you! Your message has been sent successfully.';
           this.parentNode.appendChild(confirmationMessage);
         }
       });
