@@ -7,7 +7,7 @@
     if (navToggle && siteNav) {
       navToggle.addEventListener('click', function() {
         siteNav.classList.toggle('is-open');
-        navToggle.setAttribute('aria-expanded', siteNav.classList.contains('is-open'));
+        this.setAttribute('aria-expanded', siteNav.classList.contains('is-open'));
       });
     }
 
@@ -15,24 +15,16 @@
     const revealElements = document.querySelectorAll('[data-reveal]');
 
     if (revealElements.length > 0) {
-      const observerOptions = {
-        threshold: 0.1
-      };
-
-      const observerCallback = function(entries, observer) {
-        entries.forEach(function(entry) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
             observer.unobserve(entry.target);
           }
         });
-      };
+      }, { threshold: 0.1 });
 
-      const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-      revealElements.forEach(function(el) {
-        observer.observe(el);
-      });
+      revealElements.forEach(el => observer.observe(el));
     }
 
     // Smooth scroll for in-page anchor links
@@ -52,7 +44,7 @@
       });
     });
 
-    // Contact form validation and confirmation
+    // Contact form validation
     const contactForm = document.querySelector('.section-contact_form form');
 
     if (contactForm) {
@@ -61,48 +53,43 @@
 
         let isValid = true;
 
-        // Reset error messages
-        document.querySelectorAll('.section-contact_form .error').forEach(el => el.textContent = '');
+        // Reset previous errors
+        this.querySelectorAll('.error-message').forEach(el => el.remove());
 
-        // Validate required fields
-        const requiredFields = this.querySelectorAll('[required]');
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
-            field.classList.add('invalid');
-            const errorEl = field.nextElementSibling;
-            if (errorEl && errorEl.classList.contains('error')) {
-              errorEl.textContent = 'This field is required.';
-              isValid = false;
-            }
-          } else {
-            field.classList.remove('invalid');
-          }
-        });
+        // Validate name field
+        const nameField = this.querySelector('[name="name"]');
+        if (!nameField.value.trim()) {
+          showError(nameField, 'Name is required');
+          isValid = false;
+        }
 
-        // Validate email format
-        const emailField = this.querySelector('input[type="email"]');
-        if (emailField && emailField.value.trim()) {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(emailField.value)) {
-            emailField.classList.add('invalid');
-            const errorEl = emailField.nextElementSibling;
-            if (errorEl && errorEl.classList.contains('error')) {
-              errorEl.textContent = 'Please enter a valid email address.';
-              isValid = false;
-            }
-          } else {
-            emailField.classList.remove('invalid');
-          }
+        // Validate email field
+        const emailField = this.querySelector('[name="email"]');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailField.value.trim() || !emailRegex.test(emailField.value)) {
+          showError(emailField, 'Valid email is required');
+          isValid = false;
+        }
+
+        // Validate message field
+        const messageField = this.querySelector('[name="message"]');
+        if (!messageField.value.trim()) {
+          showError(messageField, 'Message is required');
+          isValid = false;
         }
 
         if (isValid) {
-          // Show confirmation message
-          const formContainer = this.closest('.section-contact_form');
-          if (formContainer) {
-            formContainer.innerHTML = '<p class="confirmation">Thank you! Your message has been sent.</p>';
-          }
+          // Replace form with confirmation message
+          this.innerHTML = '<p>Thank you! Your message has been sent.</p>';
         }
       });
+
+      function showError(field, message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        field.parentNode.appendChild(errorDiv);
+      }
     }
   });
 })();
