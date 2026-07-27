@@ -7,12 +7,12 @@
   <meta name="description" content="Where Purity Meets Perfection">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
-  <style>:root{--pattern-bg:url("data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%2032%2032%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cdefs%3E%3Cpattern%20id%3D%27bg-pattern%27%20width%3D%2732%27%20height%3D%2732%27%20patternUnits%3D%27userSpaceOnUse%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27none%27%2F%3E%3Cpath%20d%3D%27M0%200L32%2016L0%2032z%27%20fill%3D%27%23f5f5f5%27%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27url(%23bg-pattern)%27%2F%3E%3C%2Fsvg%3E");}</style>
+  
 </head>
 <body class="mode-dark">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Eclat Vodka"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><text x='0' y='28' font-family='sans-serif' font-size='24' fill='currentColor'>Eclat Vodka</text></svg></a>
+      <a href="index.html" class="site-logo" aria-label="Eclat Vodka"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><text x='0' y='30' font-size='28' font-family='sans-serif' fill='currentColor'>Eclat Vodka</text></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -29,32 +29,34 @@
   </header>
 
   <main>
-    <section class="section-contact_form">
+    <section class="page-header">
   <div class="container">
-    <h2>We'd love to hear from you</h2>
-    <p>Whether it's a press inquiry, distributor opportunity, or just a message — we're here for you.</p>
-    <form action="#" method="post">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your Full Name" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="your@email.com" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="How can we assist?" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
+    <h1>Get in Touch with Us</h1>
+    <p class="page-header-subtitle">Whether you're a guest, press, or distributor—let us know how we can assist.</p>
   </div>
 </section>
 
-<section class="section-cta_banner">
+<section class="section-contact_form">
   <div class="container">
-    <h3>Join Our Exclusive Mailing List</h3>
-    <p>Receive first access to new releases, events, and curated content for discerning vodka enthusiasts.</p>
-    <form action="#" method="post">
-      <input type="email" id="newsletter-email" name="newsletter-email" placeholder="Enter your email" required>
-      <button type="submit">Sign Up</button>
+    <h2>We'd Love to Hear From You</h2>
+    <p class="form-intro">Please fill out the form below and one of our specialists will get back to you shortly.</p>
+    <form novalidate>
+      <div class="form-field">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+        <span class="field-error" data-error-for="name"></span>
+      </div>
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+        <span class="field-error" data-error-for="email"></span>
+      </div>
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <span class="field-error" data-error-for="message"></span>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
   </div>
 </section>
