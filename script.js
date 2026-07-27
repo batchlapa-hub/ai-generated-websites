@@ -15,24 +15,16 @@
     const revealElements = document.querySelectorAll('[data-reveal]');
 
     if (revealElements.length > 0) {
-      const observerOptions = {
-        threshold: 0.1
-      };
-
-      const observerCallback = function(entries, observer) {
-        entries.forEach(function(entry) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
             observer.unobserve(entry.target);
           }
         });
-      };
+      }, { threshold: 0.1 });
 
-      const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-      revealElements.forEach(function(element) {
-        observer.observe(element);
-      });
+      revealElements.forEach(el => observer.observe(el));
     }
 
     // Smooth scroll for in-page anchor links
@@ -45,14 +37,14 @@
 
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 70,
+            top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
         }
       });
     });
 
-    // Contact form validation and confirmation
+    // Contact form validation and submission
     const contactForm = document.querySelector('.section-contact_form form');
 
     if (contactForm) {
@@ -61,34 +53,41 @@
 
         let isValid = true;
 
-        // Reset previous error messages
-        document.querySelectorAll('.section-contact_form .error').forEach(el => el.remove());
+        // Reset error messages
+        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
 
         // Validate required fields
         const requiredFields = this.querySelectorAll('[required]');
         requiredFields.forEach(field => {
           if (!field.value.trim()) {
-            const errorMsg = document.createElement('div');
-            errorMsg.className = 'error';
-            errorMsg.textContent = 'This field is required.';
-            field.parentNode.appendChild(errorMsg);
-            isValid = false;
+            const errorEl = field.nextElementSibling;
+            if (errorEl && errorEl.classList.contains('error-message')) {
+              errorEl.textContent = 'This field is required.';
+              isValid = false;
+            }
           }
         });
 
         // Validate email format
         const emailField = this.querySelector('input[type="email"]');
-        if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-          const errorMsg = document.createElement('div');
-          errorMsg.className = 'error';
-          errorMsg.textContent = 'Please enter a valid email address.';
-          emailField.parentNode.appendChild(errorMsg);
-          isValid = false;
+        if (emailField) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(emailField.value.trim())) {
+            const errorEl = emailField.nextElementSibling;
+            if (errorEl && errorEl.classList.contains('error-message')) {
+              errorEl.textContent = 'Please enter a valid email address.';
+              isValid = false;
+            }
+          }
         }
 
         if (isValid) {
-          // Replace form with confirmation message
-          this.innerHTML = '<p>Thank you for your message! We will get back to you soon.</p>';
+          // Show confirmation message
+          this.style.display = 'none';
+          const confirmationMessage = document.createElement('div');
+          confirmationMessage.className = 'form-confirmation';
+          confirmationMessage.textContent = 'Thank you! Your message has been sent.';
+          this.parentNode.appendChild(confirmationMessage);
         }
       });
     }
