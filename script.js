@@ -86,41 +86,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Check if there are multiple FAQ items and add single-open-at-a-time behavior
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems.length > 0) {
-        faqItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Close all other open FAQ items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('open')) {
-                        otherItem.classList.remove('open');
-                        otherItem.querySelector('.faq-content').style.maxHeight = null;
-                    }
-                });
-
-                // Toggle current item
-                item.classList.toggle('open');
-                const content = item.querySelector('.faq-content');
-                if (item.classList.contains('open')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                } else {
-                    content.style.maxHeight = null;
-                }
-            });
-        });
-    }
-
-    // Check if testimonial grid has 3+ items and add autoplay rotation
+    // Check if there are multiple testimonial items and add autoplay functionality
     const testimonialGrid = document.querySelector('.testimonial-grid');
     if (testimonialGrid && testimonialGrid.children.length >= 3) {
         let currentIndex = 0;
         setInterval(() => {
             const items = Array.from(testimonialGrid.children);
             items.forEach((item, index) => {
-                item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+                item.style.display = index === currentIndex ? 'block' : 'none';
             });
             currentIndex = (currentIndex + 1) % items.length;
         }, 5000);
+    }
+
+    // Ensure only one FAQ detail is open at a time
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const details = item.querySelector('details');
+                if (details.open) {
+                    // Close all other open FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const otherDetails = otherItem.querySelector('details');
+                            if (otherDetails && otherDetails.open) {
+                                otherDetails.open = false;
+                            }
+                        }
+                    });
+                }
+            });
+        });
     }
 })();
