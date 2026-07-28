@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: 
-Sitemap: https://www.auraestates.com/sitemap.xml
+Disallow: /admin/
+Sitemap: https://www.finfusionaquariums.com/sitemap.xml
