@@ -86,37 +86,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Check if there are multiple testimonial items and add autoplay functionality
-    const testimonialGrid = document.querySelector('.testimonial-grid');
-    if (testimonialGrid && testimonialGrid.children.length >= 3) {
-        let currentIndex = 0;
-        setInterval(() => {
-            const items = Array.from(testimonialGrid.children);
-            items.forEach((item, index) => {
-                item.style.display = index === currentIndex ? 'block' : 'none';
-            });
-            currentIndex = (currentIndex + 1) % items.length;
-        }, 5000);
-    }
-
-    // Add single-open-at-a-time behavior for FAQ items
+    // Check for '.faq-item' and apply single-open-at-a-time behavior
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const details = item.querySelector('details');
-                if (details.open) {
-                    // Close all other open FAQ items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            const otherDetails = otherItem.querySelector('details');
-                            if (otherDetails && otherDetails.open) {
-                                otherDetails.open = false;
-                            }
-                        }
-                    });
+            item.addEventListener('click', function() {
+                // Close all other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('open')) {
+                        otherItem.classList.remove('open');
+                        otherItem.querySelector('.faq-content').style.maxHeight = null;
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('open');
+                const content = item.querySelector('.faq-content');
+                if (item.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
                 }
             });
         });
+    }
+
+    // Check for '.testimonial-grid' and apply autoplay/rotation if 3+ items
+    const testimonialGrid = document.querySelector('.testimonial-grid');
+    if (testimonialGrid) {
+        const testimonials = testimonialGrid.querySelectorAll('.testimonial-item');
+        if (testimonials.length >= 3) {
+            let currentIndex = 0;
+            setInterval(() => {
+                // Hide all
+                testimonials.forEach((item, index) => {
+                    item.style.display = index === currentIndex ? 'block' : 'none';
+                });
+                currentIndex = (currentIndex + 1) % testimonials.length;
+            }, 5000);
+        }
     }
 })();
