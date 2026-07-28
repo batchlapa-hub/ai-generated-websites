@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Check for '.faq-item' and add single-open-at-a-time behavior
+    // Check if '.faq-item' exists and add single-open-at-a-time behavior
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         otherItem.querySelector('.faq-content').style.maxHeight = null;
                     }
                 });
-
                 // Toggle current item
                 item.classList.toggle('open');
                 const content = item.querySelector('.faq-content');
@@ -111,19 +110,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Check for '.testimonial-grid' and add autoplay/rotation if 3+ items
+    // Check if '.testimonial-grid' has 3+ items and add autoplay/rotation
     const testimonialGrid = document.querySelector('.testimonial-grid');
-    if (testimonialGrid) {
-        const testimonials = testimonialGrid.querySelectorAll('.testimonial-item');
-        if (testimonials.length >= 3) {
-            let currentIndex = 0;
-            setInterval(() => {
-                // Hide all
-                testimonials.forEach((item, index) => {
-                    item.style.display = index === currentIndex ? 'block' : 'none';
-                });
-                currentIndex = (currentIndex + 1) % testimonials.length;
-            }, 5000);
-        }
+    if (testimonialGrid && testimonialGrid.children.length >= 3) {
+        let currentIndex = 0;
+        setInterval(() => {
+            const items = Array.from(testimonialGrid.children);
+            items.forEach((item, index) => {
+                item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+            });
+            currentIndex = (currentIndex + 1) % items.length;
+        }, 5000);
     }
 })();
