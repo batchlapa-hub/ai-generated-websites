@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Single-open-at-a-time behavior for FAQ items
+    // Check for .faq-item elements and apply single-open-at-a-time behavior
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
@@ -95,19 +95,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('open')) {
                         otherItem.classList.remove('open');
-                        const detail = otherItem.querySelector('details');
-                        if (detail) detail.open = false;
+                        otherItem.querySelector('details').setAttribute('open', false);
                     }
                 });
                 // Toggle current item
                 item.classList.toggle('open');
-                const detail = item.querySelector('details');
-                if (detail) detail.open = !detail.open;
+                const details = item.querySelector('details');
+                if (details) {
+                    details.setAttribute('open', !details.hasAttribute('open'));
+                }
             });
         });
     }
 
-    // Autoplay rotation for testimonial grid if 3+ items
+    // Check for .testimonial-grid and apply autoplay/rotation if 3+ items
     const testimonialGrid = document.querySelector('.testimonial-grid');
     if (testimonialGrid && testimonialGrid.children.length >= 3) {
         let currentIndex = 0;
