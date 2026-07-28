@@ -86,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Check if there are multiple FAQ items and add single-open-at-a-time behavior
+    // Check for '.faq-item' and add single-open-at-a-time behavior
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
             item.addEventListener('click', function() {
-                // Close all other open FAQ items
+                // Close all other open items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('open')) {
                         otherItem.classList.remove('open');
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
-                // Toggle this item's state
+                // Toggle current item
                 item.classList.toggle('open');
                 const content = item.querySelector('.faq-content');
                 if (item.classList.contains('open')) {
@@ -111,16 +111,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Check if testimonial-grid has 3+ items and add autoplay/rotation
+    // Check for '.testimonial-grid' and add autoplay/rotation if 3+ items
     const testimonialGrid = document.querySelector('.testimonial-grid');
-    if (testimonialGrid && testimonialGrid.children.length >= 3) {
-        let currentIndex = 0;
-        setInterval(() => {
-            const items = Array.from(testimonialGrid.children);
-            items.forEach((item, index) => {
-                item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
-            });
-            currentIndex = (currentIndex + 1) % items.length;
-        }, 5000);
+    if (testimonialGrid) {
+        const testimonials = testimonialGrid.querySelectorAll('.testimonial-item');
+        if (testimonials.length >= 3) {
+            let currentIndex = 0;
+            setInterval(() => {
+                // Hide all
+                testimonials.forEach((item, index) => {
+                    item.style.display = index === currentIndex ? 'block' : 'none';
+                });
+                currentIndex = (currentIndex + 1) % testimonials.length;
+            }, 5000);
+        }
     }
 })();
