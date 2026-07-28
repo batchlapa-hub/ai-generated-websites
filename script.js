@@ -86,37 +86,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Check if there are multiple testimonial items and add autoplay functionality
+    // Single-open-at-a-time behavior for FAQ items
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Close all other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('open')) {
+                        otherItem.classList.remove('open');
+                        const detail = otherItem.querySelector('details');
+                        if (detail) detail.open = false;
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('open');
+                const detail = item.querySelector('details');
+                if (detail) detail.open = !detail.open;
+            });
+        });
+    }
+
+    // Autoplay rotation for testimonial grid if 3+ items
     const testimonialGrid = document.querySelector('.testimonial-grid');
     if (testimonialGrid && testimonialGrid.children.length >= 3) {
         let currentIndex = 0;
         setInterval(() => {
             const items = Array.from(testimonialGrid.children);
             items.forEach((item, index) => {
-                item.style.display = index === currentIndex ? 'block' : 'none';
+                item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
             });
             currentIndex = (currentIndex + 1) % items.length;
         }, 5000);
-    }
-
-    // Ensure only one FAQ detail is open at a time
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems.length > 0) {
-        faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const details = item.querySelector('details');
-                if (details.open) {
-                    // Close all other open FAQ items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            const otherDetails = otherItem.querySelector('details');
-                            if (otherDetails && otherDetails.open) {
-                                otherDetails.open = false;
-                            }
-                        }
-                    });
-                }
-            });
-        });
     }
 })();
