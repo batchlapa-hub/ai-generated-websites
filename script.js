@@ -86,29 +86,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-    // Check for .faq-item elements and apply single-open-at-a-time behavior
+    // Check if there are multiple FAQ items and add single-open-at-a-time behavior
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Close all other open items
+            item.addEventListener('click', function() {
+                // Close all other open FAQ items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('open')) {
                         otherItem.classList.remove('open');
-                        otherItem.querySelector('details').setAttribute('open', false);
+                        otherItem.querySelector('.faq-content').style.maxHeight = null;
                     }
                 });
+
                 // Toggle current item
                 item.classList.toggle('open');
-                const details = item.querySelector('details');
-                if (details) {
-                    details.setAttribute('open', !details.hasAttribute('open'));
+                const content = item.querySelector('.faq-content');
+                if (item.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
                 }
             });
         });
     }
 
-    // Check for .testimonial-grid and apply autoplay/rotation if 3+ items
+    // Check if testimonial grid has 3+ items and add autoplay rotation
     const testimonialGrid = document.querySelector('.testimonial-grid');
     if (testimonialGrid && testimonialGrid.children.length >= 3) {
         let currentIndex = 0;
