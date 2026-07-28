@@ -1,44 +1,33 @@
-<?xml version='1.0' encoding='UTF-8'?><urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <url>
-    <loc>https://vinum.com/index.html</loc>
-    <lastmod>2025-04-10</lastmod>
+    <loc>https://www.pineridgehorseranch.com/index.html</loc>
+    <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vinum.com/wines.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.pineridgehorseranch.com/about.html</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vinum.com/our-story.html</loc>
-    <lastmod>2025-04-10</lastmod>
+    <loc>https://www.pineridgehorseranch.com/services.html</loc>
+    <lastmod>2025-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vinum.com/events.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vinum.com/wine-club.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.pineridgehorseranch.com/gallery.html</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vinum.com/account.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://vinum.com/contact.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.pineridgehorseranch.com/contact.html</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
