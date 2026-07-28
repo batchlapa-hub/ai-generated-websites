@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Sitemap: https://www.premierplumbingsolutions.com/sitemap.xml
+Sitemap: https://www.premierauto.com/sitemap.xml
