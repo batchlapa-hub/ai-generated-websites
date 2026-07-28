@@ -111,19 +111,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Check for '.testimonial-grid' and apply autoplay/rotation if 3+ items
+    // Check for '.testimonial-grid' and apply autoplay rotation if 3+ items
     const testimonialGrid = document.querySelector('.testimonial-grid');
-    if (testimonialGrid) {
-        const testimonials = testimonialGrid.querySelectorAll('.testimonial-item');
-        if (testimonials.length >= 3) {
-            let currentIndex = 0;
-            setInterval(() => {
-                // Hide all
-                testimonials.forEach((item, index) => {
-                    item.style.display = index === currentIndex ? 'block' : 'none';
-                });
-                currentIndex = (currentIndex + 1) % testimonials.length;
-            }, 5000);
-        }
+    if (testimonialGrid && testimonialGrid.children.length >= 3) {
+        let currentIndex = 0;
+        setInterval(() => {
+            const items = Array.from(testimonialGrid.children);
+            items.forEach((item, index) => {
+                item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+            });
+            currentIndex = (currentIndex + 1) % items.length;
+        }, 5000);
     }
 })();
