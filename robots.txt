@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Sitemap: https://www.havenrealty.com/sitemap.xml
+Disallow: 
+Sitemap: https://www.auraestates.com/sitemap.xml
