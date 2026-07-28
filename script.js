@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 5000);
     }
 
-    // Ensure only one FAQ detail is open at a time
+    // Add single-open-at-a-time behavior for FAQ items
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
