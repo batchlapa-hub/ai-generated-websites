@@ -85,4 +85,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* ---- Optional enhancements ---- */
-""
+(function() {
+  // Single-open-at-a-time for FAQ details
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (faqItems.length) {
+    faqItems.forEach(item => {
+      item.addEventListener('click', () => {
+        faqItems.forEach(other => {
+          if (other !== item) other.querySelector('details').open = false;
+        });
+      });
+    });
+  }
+
+  // Testimonial autoplay rotation
+  const testimonialGrid = document.querySelector('.testimonial-grid');
+  if (testimonialGrid && testimonialGrid.children.length >= 3) {
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % testimonialGrid.children.length;
+      testimonialGrid.style.transform = `translateX(-${index * 100}%)`;
+    }, 4000);
+  }
+})();
