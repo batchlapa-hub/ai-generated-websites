@@ -86,25 +86,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 (function() {
-  // Single-open-at-a-time for FAQ details
-  const faqItems = document.querySelectorAll('.faq-item');
-  if (faqItems.length) {
-    faqItems.forEach(item => {
-      item.addEventListener('click', () => {
-        faqItems.forEach(other => {
-          if (other !== item) other.querySelector('details').open = false;
-        });
-      });
-    });
-  }
+    // Check for .faq-item elements and apply single-open-at-a-time behavior
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Close all other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('open')) {
+                        otherItem.classList.remove('open');
+                        otherItem.querySelector('.faq-content').style.maxHeight = null;
+                    }
+                });
 
-  // Testimonial autoplay rotation
-  const testimonialGrid = document.querySelector('.testimonial-grid');
-  if (testimonialGrid && testimonialGrid.children.length >= 3) {
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % testimonialGrid.children.length;
-      testimonialGrid.style.transform = `translateX(-${index * 100}%)`;
-    }, 4000);
-  }
+                // Toggle current item
+                item.classList.toggle('open');
+                const content = item.querySelector('.faq-content');
+                if (item.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+    }
+
+    // Check for .testimonial-grid and apply autoplay/rotation if 3+ items
+    const testimonialGrid = document.querySelector('.testimonial-grid');
+    if (testimonialGrid && testimonialGrid.children.length >= 3) {
+        let currentIndex = 0;
+        setInterval(() => {
+            const items = Array.from(testimonialGrid.children);
+            items.forEach((item, index) => {
+                item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+            });
+            currentIndex = (currentIndex + 1) % items.length;
+        }, 5000);
+    }
 })();
