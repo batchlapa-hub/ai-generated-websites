@@ -7,17 +7,17 @@
    solid one -- this is what fixes the sticky header appearing to vanish).
    ============================================================ */
 :root{
-  --color-primary:#3B82F6;
-  --color-accent:#38BDF8;
-  --color-bg:#F8FAFC;
-  --color-surface:#FFFFFF;
-  --color-text:#0F172A;
+  --color-primary:#000000;
+  --color-accent:#000000;
+  --color-bg:#FFFFFF;
+  --color-surface:#F9F9F9;
+  --color-text:#2C2C2C;
   --color-text-muted:rgba(17,17,17,0.65);
   --color-border:rgba(17,17,17,0.1);
-  --font-heading:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  --font-body:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --radius-sm:10px; --radius-md:18px; --radius-lg:28px; --radius-pill:999px;
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.08); --shadow-md:0 4px 16px rgba(0,0,0,0.08); --shadow-lg:0 12px 32px rgba(0,0,0,0.12);
+  --shadow-sm:none; --shadow-md:0 0 0 1px rgba(0,0,0,0.08); --shadow-lg:0 0 0 1px rgba(0,0,0,0.08);
   --space-1:0.25rem; --space-2:0.5rem; --space-3:1rem; --space-4:1.5rem;
   --space-5:2rem; --space-6:3rem; --space-7:4.5rem; --space-8:7rem;
   --container-max:1180px;
@@ -218,116 +218,223 @@ input.is-invalid,textarea.is-invalid{border-color:#DC2626;}
 
 
 /* ---- Bespoke section enhancements (filtered to canonical classes) ---- */
-.container {  
-  padding: var(--space-4) var(--space-5);  
+.container {
+  padding: var(--space-4) var(--space-5);
 }
-  
 
-.site-header-inner {  
-  display: flex;  
-  align-items: center;  
-  justify-content: space-between;  
-  padding: var(--space-3) 0;  
-}
-  
 
-.nav-toggle:hover {  
-  transform: scale(1.1);  
-  transition: transform 0.2s ease;  
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
 }
-  
 
-.site-nav a:hover {  
-  text-decoration: underline;  
-  color: var(--color-accent);  
-}
-  
 
-.section-hero {  
-  padding-top: var(--space-6);  
-  padding-bottom: var(--space-7);  
+.nav-toggle {
+  display: none;
 }
-  
 
-.hero-inner {  
-  display: flex;  
-  align-items: center;  
-  gap: var(--space-5);  
-}
-  
 
-.hero-content:hover {  
-  transform: translateX(10px);  
-  transition: transform 0.3s ease;  
+.site-nav {
+  display: flex;
+  gap: var(--space-4);
 }
-  
 
-.feature-item:hover {  
-  box-shadow: var(--shadow-md);  
-  transition: box-shadow 0.2s ease;  
-}
-  
 
-.gallery-item img:hover {  
-  transform: scale(1.05);  
-  transition: transform 0.3s ease;  
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
-  
 
-.team-item:hover .team-role {  
-  opacity: 1;  
-  transition: opacity 0.2s ease;  
-}
-  
 
-.card-link-inner:hover {  
-  background-color: var(--color-surface);  
-  transition: background-color 0.2s ease;  
+.section-hero {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
 }
-  
 
-.card-link-arrow {  
-  transform: translateX(-5px) rotate(45deg);  
-  transition: transform 0.3s ease;  
-}
-  
 
-.card-link-inner:hover .card-link-arrow {  
-  transform: translateX(0) rotate(0deg);  
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
 }
-  
 
-.pricing-card.is-featured {  
-  border: 2px solid var(--color-accent);  
-  box-shadow: var(--shadow-lg);  
-}
-  
 
-.form-field:focus {  
-  outline: none;  
-  border-color: var(--color-primary);  
-  box-shadow: 0 0 0 2px var(--color-border);  
+.hero-content {
+  max-width: 70ch;
 }
-  
 
-.field-error {  
-  color: var(--color-text-muted);  
-}
-  
 
-.grid-2, .grid-3, .grid-4 {  
-  gap: var(--space-5);  
+.hero-subheadline {
+  margin-top: var(--space-3);
+  opacity: 0.85;
 }
-@media (min-width: 768px){
-  
-  .hero-inner {  
-    flex-direction: column;  
-    align-items: flex-start;  
-  }
+
+
+.section-about,
+.section-features,
+.section-services,
+.section-gallery,
+.section-team,
+.section-pricing_tiers,
+.section-testimonials,
+.section-faq,
+.section-stats,
+.section-cta_banner,
+.section-contact_form {
+  padding: var(--space-6) 0;
 }
-@media (min-width: 1024px){
-  
-  .grid-2, .grid-3, .grid-4 {  
-    gap: var(--space-6);  
-  }
+
+
+.feature-grid,
+.service-grid,
+.gallery-grid,
+.team-grid,
+.pricing-grid,
+.testimonial-grid,
+.faq-list,
+.stats-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+
+.feature-item,
+.service-item,
+.gallery-item,
+.team-item,
+.pricing-card,
+.testimonial-card,
+.stat,
+.faq-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.feature-item:hover,
+.service-item:hover,
+.gallery-item:hover,
+.team-item:hover,
+.pricing-card:hover,
+.testimonial-card:hover,
+.stat:hover,
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+
+.card-link-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.card-link-arrow {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.card-link:hover .card-link-arrow {
+  opacity: 1;
+}
+
+
+.grid,
+.grid-2,
+.grid-3,
+.grid-4 {
+  display: grid;
+  gap: var(--space-5);
+}
+
+
+.page-header-subtitle {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+
+.hero-visual-frame {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+
+.card,
+.icon-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card:hover,
+.icon-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+
+.form-field:focus-within label {
+  color: var(--color-primary);
+}
+
+
+.form-success {
+  margin-top: var(--space-3);
+  font-size: 0.875rem;
+  color: var(--color-accent);
+}
+
+
+.field-error {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--color-border);
+}
+
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  margin-bottom: var(--space-2);
+}
+
+
+.pricing-card.is-featured {
+  box-shadow: var(--shadow-lg);
+}
+
+
+.pricing-features li {
+  margin-bottom: var(--space-1);
+}
+
+
+.section-stats .stat-number {
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+
+.section-cta_banner .cta-inner {
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
+
+.section-contact_form form {
+  max-width: 50ch;
+  margin: 0 auto;
 }
