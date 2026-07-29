@@ -85,24 +85,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* ---- Optional enhancements ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  const testimonialGrid = document.querySelector('.testimonial-grid');
-  
-  // Optional Enhancement: Simple autoplay rotation for testimonials (only if 3+ items exist)
-  if (testimonialGrid && testimonialGrid.children.length >= 3) {
-    let currentIndex = 0;
-    
-    setInterval(() => {
-      const items = Array.from(testimonialGrid.children);
-      
-      // Fade out current
-      items[currentIndex].style.opacity = '0.2';
-      
-      // Calculate next index (loop around)
-      currentIndex = (currentIndex + 1) % items.length;
-      
-      // Fade in new
-      items[currentIndex].style.opacity = '1';
-    }, 4000); // Rotate every 4 seconds
-  }
-});
+""
