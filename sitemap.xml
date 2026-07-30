@@ -1,23 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <url>
-    <loc>https://vodafone-rally-pt.com/index.html</loc>
-    <lastmod>2026-01-15T08:00:00+00:00</lastmod>
-    <priority>1.00</priority>
+    <loc>index.html</loc>
+    <lastmod>2023-10-27</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vodafone-rally-pt.com/schedule.html</loc>
-    <lastmod>2026-01-15T08:00:00+00:00</lastmod>
-    <priority>0.90</priority>
+    <loc>events.html</loc>
+    <lastmod>2023-10-26</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vodafone-rally-pt.com/news.html</loc>
-    <lastmod>2026-01-15T08:00:00+00:00</lastmod>
-    <priority>0.80</priority>
+    <loc>health.html</loc>
+    <lastmod>2023-10-25</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vodafone-rally-pt.com/drivers.html</loc>
-    <lastmod>2026-01-15T08:00:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <loc>directory.html</loc>
+    <lastmod>2023-10-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>contact_form.html</loc>
+    <lastmod>2023-10-27</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>
