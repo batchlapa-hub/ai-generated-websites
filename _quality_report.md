@@ -2,6 +2,6 @@
 
 This site was generated and pushed after the maximum number of automated repair attempts. The following issue(s) were still flagged by the validator and may need a manual look:
 
-Broken internal links: 'about.html', 'faq.html', and 'contact.html' are referenced in navigation menus across all HTML files but are not present in the provided bundle. Missing external assets: 'style.css' is linked in every HTML file but its content is missing from the bundle (only a CSS snippet exists). Broken SVG syntax: The logo SVG in index.html, shop-all.html, about.html, faq.html, and contact.html contains an unescaped single quote character ('0 0') inside the viewBox attribute which will break HTML parsing. Missing sitemap file: 'sitemap.xml' is referenced in robots.txt but not included in the bundle.
+Broken internal links: 'racing.html', 'sports-cars.html', and 'collections.html' are referenced in navigation menus across all HTML files but are not present in the provided bundle. Missing external assets: 'favicon.svg' is linked in <head> tags of all HTML files but no SVG content for this file was included in the bundle. Broken CSS syntax: In style.css, the selector '.testimonial-card::before' contains unescaped double quotes inside a string value (content: """;), which will break parsing.
 
-Generated: 2026-07-30T07:38:54.003Z
+Generated: 2026-07-30T07:54:03.184Z
