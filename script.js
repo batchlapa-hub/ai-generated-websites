@@ -82,3 +82,55 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+
+/* ---- Optional enhancements ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  // FAQ: Single-open-at-a-time behavior for '.faq-item' details elements
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const target = this.querySelector('summary');
+      
+      if (target) {
+        // Close all other open items in the same parent container
+        const siblings = item.parentElement.children;
+        for (let sibling of siblings) {
+          if (sibling !== item && sibling.classList.contains('faq-item')) {
+            const summarySibling = sibling.querySelector('summary');
+            if (summarySibling) {
+              summarySibling.setAttribute('aria-expanded', 'false');
+              summarySibling.nextElementSibling.style.maxHeight = null;
+            }
+          }
+        }
+      }
+    });
+  });
+
+  // Testimonial Grid: Simple rotation for '.testimonial-grid' with 3+ items
+  const testimonialGrid = document.querySelector('.testimonial-grid');
+  
+  if (testimonialGrid && testimonialGrid.children.length >= 3) {
+    let currentIndex = 0;
+    const testimonials = Array.from(testimonialGrid.children);
+    
+    // Fade out current, then fade in next after delay
+    setInterval(() => {
+      const currentItem = testimonials[currentIndex];
+      
+      if (currentItem) {
+        currentItem.style.opacity = '0';
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % testimonials.length;
+          const nextItem = testimonials[currentIndex];
+          
+          if (nextItem) {
+            nextItem.style.opacity = '1';
+          }
+        }, 300); // Match fade-out duration
+      }
+    }, 5000); // Rotate every 5 seconds
+  }
+});
