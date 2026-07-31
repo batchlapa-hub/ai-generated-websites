@@ -7,17 +7,17 @@
    solid one -- this is what fixes the sticky header appearing to vanish).
    ============================================================ */
 :root{
-  --color-primary:#FFB81C;
-  --color-accent:#FFB81C;
+  --color-primary:#0066CC;
+  --color-accent:#0066CC;
   --color-bg:#FFFFFF;
   --color-surface:#F9FAFB;
   --color-text:#1F2937;
   --color-text-muted:rgba(17,17,17,0.65);
   --color-border:rgba(17,17,17,0.1);
-  --font-heading:'Montserrat, sans-serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body:'Open Sans, sans-serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:'system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:'Georgia, 'Times New Roman', serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --radius-sm:6px; --radius-md:12px; --radius-lg:20px; --radius-pill:999px;
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.08); --shadow-md:0 4px 16px rgba(0,0,0,0.08); --shadow-lg:0 12px 32px rgba(0,0,0,0.12);
+  --shadow-sm:none; --shadow-md:0 0 0 1px rgba(0,0,0,0.08); --shadow-lg:0 0 0 1px rgba(0,0,0,0.08);
   --space-1:0.25rem; --space-2:0.5rem; --space-3:1rem; --space-4:1.5rem;
   --space-5:2rem; --space-6:3rem; --space-7:4.5rem; --space-8:7rem;
   --container-max:1180px;
@@ -262,276 +262,215 @@ input.is-invalid,textarea.is-invalid{border-color:#DC2626;}
 }
 
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease-in-out;
+}
+
+
 .site-logo {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-
-.logo-text {
   font-weight: 700;
-  letter-spacing: -0.025em;
-  transition: color 0.3s ease;
-}
-
-
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  transition: opacity 0.3s ease;
 }
 
 
 .nav-toggle {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  z-index: 101;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 
-.btn {
+.nav-toggle:hover {
+  background-color: var(--color-surface);
+}
+
+
+.site-nav a {
+  position: relative;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+
+.site-nav a:hover::after {
+  width: 100%;
+}
+
+
+.btn, .btn-primary, .btn-secondary {
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 
-.btn:hover {
+.btn:hover, .btn-primary:hover, .btn-secondary:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
 
-.btn::after {
-  opacity: 1;
-}
-
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-}
-
-
-.btn-secondary {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
-  color: var(--color-text);
-}
-
-
-.section-hero {
-  position: relative;
-  overflow: hidden;
-}
-
-
-.hero-content {
-  max-width: 80ch;
-  margin-bottom: var(--space-8);
-}
-
-
-.hero-subheadline {
-  color: var(--color-text-muted);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  margin-bottom: var(--space-2);
-}
-
-
-.hero-visual {
-  position: relative;
-  z-index: 1;
-}
-
-
-.section-about {
-  background-color: var(--color-surface);
-}
-
-
-.about-inner {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
-}
-
-
-.about-content {
-  flex: 1;
-}
-
-
-.about-visual {
-  flex: 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-
-.feature-grid, .service-grid, .gallery-grid, .team-grid, .pricing-grid, .testimonial-grid, .stats-grid {
-  display: grid;
-  gap: var(--space-6);
-}
-@media (min-width: 768px){
-
-  .feature-grid, .service-grid, .gallery-grid, .team-grid, .pricing-grid, .testimonial-grid, .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-.feature-item, .service-item, .gallery-item, .team-item, .pricing-card, .testimonial-card, .stat {
-  padding: var(--space-6);
-  border-radius: var(--radius-md);
-  background-color: var(--color-surface);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-.feature-item:hover, .service-item:hover, .gallery-item:hover, .team-item:hover, .pricing-card:hover, .testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-
-.pricing-card.is-featured {
-  border: 2px solid var(--color-primary);
-  position: relative;
-}
-
-
-.pricing-card::before {
-  content: "Most Popular";
+.btn::after, .btn-primary::after, .btn-secondary::after {
+  content: "";
   position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-pill);
-  font-size: 0.75rem;
-  font-weight: 600;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 
-.pricing-card.is-featured::before {
-  background-color: var(--color-accent);
+.btn-primary:hover::after {
+  opacity: 0.1;
+}
+
+
+.section-hero, .section-about, .section-features, .section-services, .section-gallery, .section-team, .section-pricing_tiers, .section-testimonials, .section-faq, .section-stats, .section-cta_banner, .section-contact_form {
+  padding: var(--space-8) 0;
+}
+
+
+.hero-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.hero-content h1 {
+  background-image: linear-gradient(45deg, transparent 25%, var(--color-text) 25%, var(--color-text) 50%, transparent 50%, transparent 75%, var(--color-text) 75%);
+  background-size: 20px 20px;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: opacity 0.3s ease;
+}
+
+
+.hero-content:hover h1 {
+  opacity: 0.8;
+}
+
+
+.about-inner, .about-content {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+
+.is-featured {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-lg);
 }
 
 
 .price {
-  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 
-.section-faq .faq-list, .section-contact_form form {
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-.faq-item {
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-4) 0;
-}
-
-
-.section-contact_form form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-.form-field input, .form-field textarea {
-  width: 100%;
-  padding: var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
-
-.grid {
-  display: grid;
-  gap: var(--space-6);
-}
-@media (min-width: 768px){
-
-  .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  
-  .grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (min-width: 1024px){
-
-  .grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-
-.page-header {
-  padding: var(--space-8) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-
-.hero-visual-frame {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-}
-
-
-.card-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-
-.card-link:hover .card-link-inner {
-  transform: translateY(-2px);
+.pricing-features li::before, .pricing-card ul li::before {
+  content: "•";
+  color: var(--color-accent);
+  margin-right: var(--space-1);
 }
 
 
 .card-link-arrow {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 
-.card-link:hover .card-link-arrow {
-  transform: translateX(4px);
+.card:hover .card-link-arrow {
+  transform: translateX(5px);
+}
+
+
+.section-cta_banner {
+  background-color: var(--color-surface);
+}
+
+
+.cta-inner {
+  border: 1px solid var(--color-border);
+  transition: border-color 0.3s ease;
+}
+
+
+.cta-inner:hover {
+  border-color: var(--color-accent);
+}
+
+
+.form-field:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary), 0.1);
+}
+
+
+.form-success {
+  animation: pulseSuccess 1.5s infinite alternate;
+}
+
+
+.grid-2, .grid-3, .grid-4 {
+  gap: var(--space-6);
 }
 @media (min-width: 768px){
+
+  .site-header {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+
+  .grid-2, .grid-3, .grid-4 {
+    gap: var(--space-8);
+  }
 }
-@media (min-width: 768px){
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-@media (min-width: 768px){
+
+
+@keyframes pulseSuccess {
+  from {
+    box-shadow: 0 0 0 0 rgba(var(--color-primary), 0.4);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(var(--color-primary), 0);
+  }
 }
