@@ -3,91 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Website</title>
-  <meta name="description" content="">
+  <title>Labrador Retriever: Overview | The Labrador Retriever Encyclopedia</title>
+  <meta name="description" content="A comprehensive editorial guide to the world's most beloved breed.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="mode-light">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Website"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40"><text x="0" y="28" font-size="24" font-weight="700" fill="currentColor">Website</text></svg></a>
+      <a href="index.html" class="site-logo" aria-label="The Labrador Retriever Encyclopedia"><svg viewBox='0 0 160 40' xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><title>The Labrador Retriever Encyclopedia</title><defs><style>@font-face{font-family:'Scholar';src:local('Georgia'),local('Times New Roman');}</style></defs><text x='0' y='28' font-family='Scholar' font-size='34' letter-spacing='-1'>The Labrador Retriever</text><path d="M125 16 L140 5 C143.5 7.5 143.5 12.5 140 15 L125 25 M125 18 L135 8" stroke-width="4"/></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
       <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="care.html">Care &amp; Health</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section-hero">
-  <div class="container hero-inner">
-    <div class="hero-content" data-reveal>
-      <h1>The Labrador Retriever - A Dog for All Reasons</h1>
-      <p class="hero-subheadline">Versatile, good-natured, and family-friendly. Explore breed history, health, and training.</p>
-      <a href="index.html" class="btn btn-primary">Join the Club</a>
-    </div>
-    
+    <section class="section-intro">
+  <div class="container intro-inner" data-reveal>
+    <h1>Labrador Retriever</h1>
+    <p class="intro-body">The Labrador Retriever stands as one of the most adaptable and beloved breeds in modern history. Originally developed for retrieving game on English estates, their gentle disposition combined with high intelligence has made them indispensable companions, service partners, and working dogs across the globe.</p>
   </div>
 </section>
 
-<section class="section-testimonials">
+<section class="section-article_section">
+  <div class="container article-inner" data-reveal>
+    <h2></h2>
+    <p>Renowned for an affectionate nature, Labradors thrive in households that can provide consistent mental stimulation. Their water-resistant double coat allows them to excel in aquatic environments, while their steady temperament makes them ideal candidates for police and search-and-rescue operations. Whether working a field trial or relaxing beside a family on the sofa, the breed maintains a balance of playfulness and maturity.</p>
+  </div>
+</section>
+
+<section class="section-key_facts">
   <div class="container">
-    <h2>Owners Who Rely on Their Labs</h2>
-    <ul class="testimonial-grid grid grid-2">
-    <li class="card testimonial-card" data-reveal>
-      <blockquote>&ldquo;After switching from a Golden to a Yellow Lab, the temperament difference was immediate. My dog is patient with our toddler and calm enough for quiet reading time.&rdquo;</blockquote>
-      <footer><cite>Sarah Jenkins, Owner of 'Biscuit', 3-year-old Chocolate Lab</cite></footer>
+    
+    <ul class="key-facts-grid grid grid-3">
+    <li class="key-fact" data-reveal>
+      <span class="key-fact-label">Origin</span>
+      <span class="key-fact-value">Newfoundland / Canada</span>
     </li>
-    <li class="card testimonial-card" data-reveal>
-      <blockquote>&ldquo;We needed a working companion for our farm rescue operations. Our black Labrador handles the heavy lifting and herding tasks while remaining gentle with the sheep.&rdquo;</blockquote>
-      <footer><cite>Marcus Thorne, Head Farmer, Black Mountain Ranch</cite></footer>
+    <li class="key-fact" data-reveal>
+      <span class="key-fact-label">Height</span>
+      <span class="key-fact-value">21.5–24.5 inches</span>
+    </li>
+    <li class="key-fact" data-reveal>
+      <span class="key-fact-label">Weight</span>
+      <span class="key-fact-value">55–80 lbs</span>
+    </li>
+    <li class="key-fact" data-reveal>
+      <span class="key-fact-label">Lifespan</span>
+      <span class="key-fact-value">10–12 years</span>
     </li>
     </ul>
   </div>
 </section>
 
-<section class="section-cta_banner">
-  <div class="container cta-inner" data-reveal>
-    <h2>Ready to find your perfect match?</h2>
-    <p>Whether you are looking for a hunting partner or a loyal family companion, our guides help you choose the right lineage and lifestyle fit.</p>
-    <a href="index.html" class="btn btn-primary">Browse Our Selection</a>
+<section class="section-pull_quote">
+  <div class="container pull-quote-inner" data-reveal>
+    <blockquote>&ldquo;The Labrador is not just a dog; it is an extension of the family.&rdquo;</blockquote>
+    <footer><cite>Breed Standard Consensus</cite></footer>
   </div>
 </section>
 
-<section class="section-contact_form">
+<section class="section-gallery">
   <div class="container">
-    <h2>Get in Touch with Modern Breed Authority</h2>
-    <p class="form-intro">Have questions about breed standards or need advice on selecting a puppy from our network?</p>
-    <form novalidate>
-      <div class="form-field">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
-        <span class="field-error" data-error-for="name"></span>
-      </div>
-      <div class="form-field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-        <span class="field-error" data-error-for="email"></span>
-      </div>
-      <div class="form-field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <span class="field-error" data-error-for="message"></span>
-      </div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
+    <h2></h2>
+    <ul class="gallery-grid grid grid-3">
+    <li class="card icon-card gallery-item" data-reveal>
+      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M18,6C18,5.45 17.55,5 17,5H7C6.45,5 6,5.45 6,6V19A1,1 0 0,0 7,20H17A1,1 0 0,0 18,19V6M18,8V18H13L18,13L18,8Z"/><path d="M7,6V19H9.5L4.5,23.5L9.5,27V19H6C5.45,19 5,19.45 5,20A1,1 0 0,0 6,21H18V19H17V6H7Z"/></svg></div>
+      <h3>Rin Tin Tin (1927)</h3>
+      
+      <p>The legendary star of silent films, Rin Tin Tin was rescued as a puppy and became a cultural icon for the breed.</p>
+    </li>
+    <li class="card icon-card gallery-item" data-reveal>
+      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12,2C10.5,2 9.17,2.8 8.5,4L6,7V11H5V14H4V18H5V20H13V22H21V20H22V18H21V14H20V11H19V7L16.5,4C15.83,2.8 14.5,2 13,2M14,5C14.55,5 15,5.45 15,6V7H10V6C10,5.45 10.45,5 11,5H14Z"/><path d="M8.5,9L9,13H15L15.5,9H8.5Z"/></svg></div>
+      <h3>Lassie (1954–1960)</h3>
+      
+      <p>Perhaps the most famous fictional dog in history, Lassie solidified the image of the loyal retriever companion.</p>
+    </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-related_topics">
+  <div class="container">
+    <h2>Related Topics</h2>
+    <ul class="related-topics-grid grid grid-3">
+    <li class="card related-topic-card" data-reveal><h3>Golden Retriever</h3><p>Similar retrieving lineage with a slightly longer muzzle and feathered coat.</p></li>
+    <li class="card related-topic-card" data-reveal><h3>Chesapeake Bay Retriever</h3><p>A larger, tougher working breed specifically adapted for cold-water hunting in the American Northeast.</p></li>
+    <li class="card related-topic-card" data-reveal><h3>Newfoundland</h3><p>The massive water-retrieving ancestor that contributed to the Labrador's lineage.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-sources_citations">
+  <div class="container">
+    <h2>Sources</h2>
+    <ol class="sources-list"><li><a href="https://www.akc.org/dog-breeds/labrador-retriever/" target="_blank" rel="noopener noreferrer">American Kennel Club Breed Standard: Labrador Retriever</a></li><li>The Dog Encyclopedia, 4th Edition (Wheeler Publishing)</li>
+    </ol>
   </div>
 </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Website. All rights reserved.</p>
+      <p>&copy; 2026 The Labrador Retriever Encyclopedia. All rights reserved.</p>
       <nav class="footer-nav">
       <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="care.html">Care &amp; Health</a>
       </nav>
     </div>
   </footer>
