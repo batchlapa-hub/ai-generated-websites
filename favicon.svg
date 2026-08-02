@@ -1,1 +1,1 @@
-<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M16 3L4.5 9v8l7.5 2-7.5 2v8L16 31l11.5-1-7.5-2 7.5-2V9L16 3z' fill='currentColor'/><path d='M14 10h4v4h-4zM14 16h4v4h-4zM16 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z' fill='currentColor'/></svg>
+<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M16 2L4 9v18h24V9l-12-7z' fill='currentColor'/><circle cx='16' cy='20' r='5' fill='currentColor'/></svg>
