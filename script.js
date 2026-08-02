@@ -82,3 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+
+/* ---- Optional enhancements ---- */
+""
