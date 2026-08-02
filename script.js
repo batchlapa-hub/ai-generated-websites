@@ -82,29 +82,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
-
-/* ---- Optional enhancements ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  // Optional Enhancement: Single-open-at-a-time behavior for FAQ items
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const summary = item.querySelector('summary');
-    
-    if (summary) {
-      summary.addEventListener('click', () => {
-        // Close all other open FAQs first
-        faqItems.forEach(otherItem => {
-          const otherSummary = otherItem.querySelector('summary');
-          if (otherItem !== item && otherSummary) {
-            otherSummary.setAttribute('open', '');
-          }
-        });
-
-        // Toggle current FAQ
-        summary.removeAttribute('open');
-      });
-    }
-  });
-});
