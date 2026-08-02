@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="currentColor"/></svg>
+<svg viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16 4L8 16H24L16 4Z' fill='currentColor' opacity='0.9'/><path d='M8 16V20C8 23.3 10.7 26 14 26H18C21.3 26 24 23.3 24 20V16' fill='currentColor'/><path d='M14 26V29L16 31L18 29V26' fill='currentColor'/></svg>
