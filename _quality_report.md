@@ -2,6 +2,6 @@
 
 This site was generated and pushed after the maximum number of automated repair attempts. The following issue(s) were still flagged by the validator and may need a manual look:
 
-In style.css, the --font-body variable declaration contains a syntax error: it ends with an extra single quote (', -apple-system...) which will break CSS parsing. Additionally, in index.html, the <meta name="description" content=""> tag has empty content that should be populated or removed to avoid SEO penalties.
+Found unescaped quote characters in HTML attributes: index.html contains 'href="[svg omitted, 172 chars]"' and 'href="[svg omitted, 148 chars]"'. These literal quotes inside attribute values will break the DOM. Additionally, script.js ends with a stray double-quote character ('"') which is invalid syntax.
 
-Generated: 2026-08-02T02:14:51.031Z
+Generated: 2026-08-02T09:20:59.353Z
