@@ -85,4 +85,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* ---- Optional enhancements ---- */
-""
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  // Optional Enhancement: Single-open-at-a-time behavior for FAQ accordion items
+  if (faqItems.length > 0) {
+    faqItems.forEach(item => {
+      const summary = item.querySelector('summary');
+      const content = item.querySelector('.content');
+
+      if (summary && content) {
+        // Prevent multiple clicks from triggering the toggle immediately
+        let isAnimating = false;
+
+        summary.addEventListener('click', () => {
+          if (isAnimating) return;
+
+          // Close all other open items
+          faqItems.forEach(otherItem => {
+            const otherSummary = otherItem.querySelector('summary');
+            const otherContent = otherItem.querySelector('.content');
+            if (otherSummary !== summary && otherContent) {
+              otherSummary.setAttribute('open', '');
+              otherContent.style.display = 'block';
+            }
+          });
+
+          // Toggle current item
+          if (!item.hasAttribute('open')) {
+            item.setAttribute('open', '');
+            content.style.display = 'block';
+          } else {
+            item.removeAttribute('open');
+            content.style.display = '';
+          }
+
+          isAnimating = true;
+          setTimeout(() => { isAnimating = false; }, 300); // Match CSS transition duration
+        });
+      }
+    });
+  }
+});
