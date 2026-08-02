@@ -3,48 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Website</title>
-  <meta name="description" content="Welcome to the official website for our premium collection of luxury skincare and cosmetics. Discover editorial-grade products designed for the refined modern aesthetic.">
+  <title>Home | LUMIERE</title>
+  <meta name="description" content="Editorial Minimalist Beauty Essentials">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="mode-light">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Website"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><path d='M5 20h10L15 5l-5 5v10zm90 0h10L125 5l-5 5v10zm40 0h10L175 5l-5 5v10z' fill='currentColor'/><text x='8' y='26' font-family='sans-serif' font-weight='bold' font-size='32px' fill='currentColor'>Website</text></svg></a>
+      <a href="index.html" class="site-logo" aria-label="LUMIERE"><svg viewBox='0 0 160 40' xmlns="http://www.w3.org/2000/svg"><title>LUMIERE</title><defs><linearGradient id="gradLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style-stop-color:currentColor; stop-opacity="0.8"/><stop offset="100%" style-stop-color:currentColor; stop-opacity="0.3"/></linearGradient></defs><path d="M10 5h4v16l-7 2V5zM24 5h6v9l-6 3V5z M34 5h6v18l-6 2V5zm14 0h16l-1 18H48L44 5z" fill="url(#gradLogo)"/></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
       <a href="index.html">Home</a>
-      <a href="contact.html">Contact</a>
+      <a href="shop-all.html">Shop All</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="the-velvet-essence-collection" class="section-hero hero-variant-centered">
-  <div class="container hero-inner-centered">
-    <div class="hero-content" data-reveal><h1>The Velvet Essence Collection</h1><p class="hero-subheadline">Editorial luxury skincare and cosmetics for the refined modern aesthetic.</p><a href="contact.html" class="btn btn-primary">Shop New Arrivals</a></div>
-    <div class="hero-visual hero-visual-centered" data-reveal><div class="hero-visual-frame"><svg viewBox='0 0 500 400' xmlns='http://www.w3.org/2000/svg'><rect x='100' y='80' width='300' height='160' rx='8' fill='currentColor'/><path d='M140 100h220v120H140z' opacity='.5'/><circle cx='250' cy='170' r='40' fill='none' stroke='currentColor' stroke-width='6'/><path d='M380 90l-100 60v20h-40v-20l-100-60L150 170h200z' fill='none' stroke='currentColor' stroke-width='4'/><text x='250' y='380' text-anchor='middle' font-family='sans-serif' font-size='14px' fill='currentColor'>Website</text></svg></div></div>
+    <section id="the-minimalist-collection" class="section-hero hero-variant-overlay">
+  <div class="hero-overlay-bg" aria-hidden="true"><svg viewBox='0 0 500 400' xmlns="http://www.w3.org/2000/svg"><title>LUMIERE Hero</title><defs><linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style-stop-color:currentColor; stop-opacity="0.4"/><stop offset="50%" style-stop-color:currentColor; stop-opacity="0.9"/><stop offset="100%" style-stop-color:currentColor; stop-opacity="0.6"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#glow)"><path d="M200 380Q190 370 185 360L140 280C130 260 120 240 130 220L160 150L200 380Z" fill="currentColor" opacity="0.3"/><path d="M270 380Q280 370 285 360L330 280C340 260 350 240 360 220L390 150L350 380Z" fill="currentColor" opacity="0.3"/><ellipse cx="180" cy="270" rx="5" ry="8" transform="rotate(-10 180 270)" fill="url(#dropGrad)"/><ellipse cx="310" cy="260" rx="5" ry="8" transform="rotate(10 310 260)" fill="url(#dropGrad)"/><path d="M190 270L210 270M300 260L320 260" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></g><rect x="50" y="80" width="400" height="280" rx="160" fill="none" stroke="currentColor" stroke-dasharray="6 6" opacity="0.3"/><text x="50%" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="48" fill="currentColor">LUMIERE</text><path d="M150 150Q200 100 300 150T450 150" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/></svg></div>
+  <div class="hero-overlay-scrim" aria-hidden="true"></div>
+  <div class="container hero-inner-overlay">
+    <div class="hero-content" data-reveal><h1>The Minimalist Collection</h1><p class="hero-subheadline">Curated essentials for the modern ritual. Less is more.</p><a href="shop-all.html" class="btn btn-primary">Shop The Drop</a></div>
   </div>
 </section>
 
-<section id="client-perspectives" class="section-testimonials section-band-a">
+<section id="shop-by-category-highlights" class="section-features section-band-a">
   <div class="container">
-    <h2>Client Perspectives</h2>
+    <h2>Shop by Category Highlights</h2>
+    <ul class="feature-grid grid grid-3 grid-variant-featured-first">
+    <li class="card icon-card feature-item card-link" data-reveal>
+      <a class="card-link-inner" href="shop-all.html">
+        <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><title>Serums & Face Oils</title><path d="M12 2L6 8v10c0 2.2 1.8 4 4 4h4c2.2 0 4-1.8 4-4V8l-6-6z" fill="currentColor"/><circle cx="12" cy="15" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 17h6" stroke="currentColor" stroke-width="2"/></svg></div>
+      <h3>Serums &amp; Face Oils</h3>
+      
+      <p>High-potency formulations for radiant skin texture.</p>
+        <span class="card-link-arrow" aria-hidden="true">Learn more &rarr;</span>
+      </a>
+    </li>
+    <li class="card icon-card feature-item card-link" data-reveal>
+      <a class="card-link-inner" href="shop-all.html">
+        <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><title>Lip Care Essentials</title><path d="M19 11h-2.5L17 6c0-.8-.7-1.5-1.5-1.5H10C9.2 4.5 8.5 5.3 8.5 6l.5 5H6c-.8 0-1.5.7-1.5 1.5v5h2.5L5 23h14l-5-2h-2.5V11z" fill="currentColor"/><circle cx="9" cy="12" r="1" fill="white"/></svg></div>
+      <h3>Lip Care Essentials</h3>
+      
+      <p>Nourishing balms and tinted stains for lasting comfort.</p>
+        <span class="card-link-arrow" aria-hidden="true">Learn more &rarr;</span>
+      </a>
+    </li>
+    <li class="card icon-card feature-item card-link" data-reveal>
+      <a class="card-link-inner" href="shop-all.html">
+        <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><title>Eye Contour Solutions</title><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/><path d="M12 9c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <h3>Eye Contour Solutions</h3>
+      
+      <p>Targeted treatments for brightening and firming.</p>
+        <span class="card-link-arrow" aria-hidden="true">Learn more &rarr;</span>
+      </a>
+    </li>
+    </ul>
+  </div>
+</section>
+
+<section id="our-standards" class="section-stats section-band-b">
+  <div class="container">
+    <ul class="stats-grid grid grid-4">
+    <li class="stat" data-reveal>
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Cruelty-Free Certified</span>
+    </li>
+    <li class="stat" data-reveal>
+      <span class="stat-number">$75+</span>
+      <span class="stat-label">Minimum Free Shipping Threshold</span>
+    </li>
+    <li class="stat" data-reveal>
+      <span class="stat-number">30</span>
+      <span class="stat-label">Day Authenticity Guarantee</span>
+    </li>
+    </ul>
+  </div>
+</section>
+
+<section id="customer-voices" class="section-testimonials section-band-a">
+  <div class="container">
+    <h2>Customer Voices</h2>
     <ul class="testimonial-grid grid grid-2">
     <li class="card testimonial-card" data-reveal>
-      <blockquote>&ldquo;The texture is incredibly smooth without feeling heavy on the skin. It transformed my evening routine.&rdquo;</blockquote>
+      <blockquote>&ldquo;The texture of the serum is unlike anything I have used before. It absorbs instantly without any sticky residue.&rdquo;</blockquote>
       <footer><cite>Elena R., Verified Buyer</cite></footer>
     </li>
     <li class="card testimonial-card" data-reveal>
-      <blockquote>&ldquo;Finally found a brand that respects minimalism in both packaging and philosophy.&rdquo;</blockquote>
-      <footer><cite>Julian M., Editorial Contributor</cite></footer>
-    </li>
-    <li class="card testimonial-card" data-reveal>
-      <blockquote>&ldquo;The serum absorbs instantly, leaving a subtle glow under my foundation.&rdquo;</blockquote>
-      <footer><cite>Sarah K., Loyal Member</cite></footer>
+      <blockquote>&ldquo;Finally a brand that understands packaging as much as performance. My vanity looks cleaner and my skin feels better.&rdquo;</blockquote>
+      <footer><cite>Marcus T., Loyal Member</cite></footer>
     </li>
     </ul>
   </div>
@@ -53,18 +106,20 @@
 <section id="join-the-inner-circle" class="section-cta_banner">
   <div class="container cta-inner" data-reveal>
     <h2>Join the Inner Circle</h2>
-    <p>Unlock exclusive early access to limited edition drops and receive a complimentary sample with your first order.</p>
-    <a href="contact.html" class="btn btn-primary">Register Now</a>
+    <p>Receive early access to limited drops, exclusive discounts, and curated editorial content delivered weekly.</p>
+    <a href="shop-all.html" class="btn btn-primary">Subscribe Now</a>
   </div>
 </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Website. All rights reserved.</p>
+      <p>&copy; 2026 LUMIERE. All rights reserved.</p>
       <nav class="footer-nav">
       <a href="index.html">Home</a>
-      <a href="contact.html">Contact</a>
+      <a href="shop-all.html">Shop All</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
       </nav>
     </div>
   </footer>
