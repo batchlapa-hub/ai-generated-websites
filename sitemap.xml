@@ -1,27 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <url>
-    <loc>https://apexautomotive.com/index.html</loc>
+    <loc>https://example.com/index.html</loc>
     <lastmod>2023-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://apexautomotive.com/models.html</loc>
-    <lastmod>2023-10-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://apexautomotive.com/heritage.html</loc>
+    <loc>https://example.com/profiles.html</loc>
     <lastmod>2023-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://apexautomotive.com/contact.html</loc>
+    <loc>https://example.com/related_topics.html</loc>
     <lastmod>2023-10-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
