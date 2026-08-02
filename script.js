@@ -85,42 +85,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* ---- Optional enhancements ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  // Single-open-at-a-time behavior for FAQ details elements
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const currentOpenItem = document.querySelector('.faq-item[open]');
-      if (currentOpenItem && currentOpenItem !== item) {
-        currentOpenItem.removeAttribute('open');
-      }
-    });
-  });
-
-  // Autoplay/rotation for testimonial grid with 3+ items
-  const testimonialGrid = document.querySelector('.testimonial-grid');
-  if (testimonialGrid && testimonialGrid.children.length >= 3) {
-    let currentIndex = 0;
-    const intervalTime = 5000;
-
-    setInterval(() => {
-      const testimonials = Array.from(testimonialGrid.children);
-      const nextIndex = (currentIndex + 1) % testimonials.length;
-      
-      // Fade out current
-      testimonials[currentIndex].style.opacity = '0';
-      
-      setTimeout(() => {
-        testimonials[currentIndex].style.display = 'none';
-        testimonials[nextIndex].style.display = 'block';
-        
-        // Small delay to allow display:block to apply before opacity change
-        setTimeout(() => {
-          testimonials[nextIndex].style.opacity = '1';
-          currentIndex = nextIndex;
-        }, 50);
-      }, intervalTime / 2);
-    }, intervalTime);
-  }
-});
+""
