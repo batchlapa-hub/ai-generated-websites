@@ -85,45 +85,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* ---- Optional enhancements ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  const faqItems = document.querySelectorAll('.faq-item');
+(function() {
+  "use strict";
 
-  // Optional Enhancement: Single-open-at-a-time behavior for FAQ accordion items
+  // --- FAQ Accordion: Ensure only one item is open at a time ---
+  const faqItems = document.querySelectorAll(".faq-item");
+  
   if (faqItems.length > 0) {
     faqItems.forEach(item => {
-      const summary = item.querySelector('summary');
-      const content = item.querySelector('.content');
+      const summary = item.querySelector("summary");
+      
+      if (!summary) return;
 
-      if (summary && content) {
-        // Prevent multiple clicks from triggering the toggle immediately
-        let isAnimating = false;
+      // Remove existing listeners to prevent duplicates on re-loads or if base script touched it
+      summary.removeEventListener('click', handleFaqClick);
+      
+      function handleFaqClick(e) {
+        e.preventDefault();
 
-        summary.addEventListener('click', () => {
-          if (isAnimating) return;
+        const isOpen = item.classList.contains("active");
 
-          // Close all other open items
-          faqItems.forEach(otherItem => {
-            const otherSummary = otherItem.querySelector('summary');
-            const otherContent = otherItem.querySelector('.content');
-            if (otherSummary !== summary && otherContent) {
-              otherSummary.setAttribute('open', '');
-              otherContent.style.display = 'block';
-            }
-          });
-
-          // Toggle current item
-          if (!item.hasAttribute('open')) {
-            item.setAttribute('open', '');
-            content.style.display = 'block';
-          } else {
-            item.removeAttribute('open');
-            content.style.display = '';
+        // Close all other items first
+        faqItems.forEach(otherItem => {
+          otherItem.classList.remove("active");
+          const otherSummary = otherItem.querySelector("summary");
+          if (otherSummary) {
+            otherSummary.style.height = ""; 
           }
-
-          isAnimating = true;
-          setTimeout(() => { isAnimating = false; }, 300); // Match CSS transition duration
         });
+
+        // Toggle current item
+        if (!isOpen) {
+          item.classList.add("active");
+          const targetHeight = summary.scrollHeight;
+          summary.style.height = `${targetHeight}px`;
+        } else {
+          item.classList.remove("active");
+          summary.style.height = "";
+        }
       }
+
+      // Re-attach the listener safely
+      summary.addEventListener('click', handleFaqClick);
     });
   }
-});
+
+})();
