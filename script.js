@@ -85,4 +85,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* ---- Optional enhancements ---- */
-""
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  if (faqItems.length > 0) {
+    faqItems.forEach(item => {
+      item.addEventListener('click', function() {
+        // Close other open items first to ensure single-open-at-a-time behavior
+        const allDetails = this.parentNode.querySelectorAll('details[open]');
+        allDetails.forEach(otherDetail => {
+          if (otherDetail !== this) {
+            otherDetail.removeAttribute('open');
+          }
+        });
+      });
+    });
+  }
+
+  const testimonialGrid = document.querySelector('.testimonial-grid');
+  
+  if (testimonialGrid && testimonialGrid.children.length >= 3) {
+    let currentIndex = 0;
+    const testimonials = Array.from(testimonialGrid.children);
+    
+    setInterval(() => {
+      // Fade out current
+      const currentTestimonial = testimonials[currentIndex];
+      currentTestimonial.style.opacity = '0';
+      
+      setTimeout(() => {
+        // Update index (loop around)
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        
+        // Fade in next
+        const nextTestimonial = testimonials[currentIndex];
+        nextTestimonial.style.opacity = '1';
+      }, 500); // Match fade-out duration
+    }, 6000); // Rotate every 6 seconds
+  }
+});
