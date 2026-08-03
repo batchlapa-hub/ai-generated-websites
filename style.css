@@ -7,17 +7,17 @@
    solid one -- this is what fixes the sticky header appearing to vanish).
    ============================================================ */
 :root{
-  --color-primary:#000000;
-  --color-accent:#FF5E3A;
+  --color-primary:#1A1A1A;
+  --color-accent:#E63946;
   --color-bg:#FFFFFF;
-  --color-surface:#F9F9F9;
+  --color-surface:#F5F5F5;
   --color-text:#000000;
   --color-text-muted:rgba(17,17,17,0.65);
   --color-border:rgba(17,17,17,0.1);
-  --font-heading:'Sans-Serif (e.g., Helvetica, Inter)', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body:'Sans-Serif (e.g., Segoe UI, Roboto)', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --radius-sm:6px; --radius-md:12px; --radius-lg:20px; --radius-pill:999px;
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.08); --shadow-md:0 4px 16px rgba(0,0,0,0.08); --shadow-lg:0 12px 32px rgba(0,0,0,0.12);
+  --font-heading:'system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:'system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-sm:10px; --radius-md:18px; --radius-lg:28px; --radius-pill:999px;
+  --shadow-sm:none; --shadow-md:0 0 0 1px rgba(0,0,0,0.08); --shadow-lg:0 0 0 1px rgba(0,0,0,0.08);
   --space-1:0.25rem; --space-2:0.5rem; --space-3:1rem; --space-4:1.5rem;
   --space-5:2rem; --space-6:3rem; --space-7:4.5rem; --space-8:7rem;
   --container-max:1180px;
@@ -38,6 +38,15 @@ h1{font-size:clamp(2.25rem,1.4rem + 3.5vw,3.75rem);letter-spacing:-0.02em;}
 h2{font-size:clamp(1.75rem,1.2rem + 2vw,2.75rem);letter-spacing:-0.01em;text-align:center;margin-bottom:var(--space-5);}
 h3{font-size:clamp(1.25rem,1.05rem + 0.8vw,1.6rem);}
 p{margin:0 0 var(--space-3);color:var(--color-text-muted);}
+
+/* Site-wide typography personality -- .classic (default) needs no override,
+   its rules are the base h1/h2/h3 declarations above. Scoped to the body
+   class so every heading site-wide picks up the same treatment consistently. */
+.typography-bold-editorial h1,.typography-bold-editorial h2,.typography-bold-editorial h3{font-weight:800;letter-spacing:-0.03em;}
+.typography-bold-editorial h2{text-align:left;}
+.typography-bold-editorial .cta-inner h2,.typography-bold-editorial .intro-inner h1,.typography-bold-editorial .hero-inner-centered h1,.typography-bold-editorial .hero-inner-overlay h1{text-align:center;}
+.typography-refined-wide h1,.typography-refined-wide h2,.typography-refined-wide h3{font-weight:400;letter-spacing:0.02em;}
+.typography-refined-wide h2{text-transform:uppercase;font-size:clamp(1.4rem,1.1rem + 1.4vw,2.1rem);}
 .container{max-width:var(--container-max);margin:0 auto;padding:0 var(--space-4);}
 
 /* Buttons */
@@ -98,6 +107,12 @@ section{padding:var(--space-7) 0;}
    affects max-width, so it can't interfere with grid-column counts or item
    sizing inside. */
 .section-width-narrow > .container{max-width:760px;}
+/* Off-center: higher specificity (2 classes) wins over the base .container's
+   margin:0 auto for margin-left specifically, pinning the block to the left
+   edge instead of centering it -- margin-right stays auto from the base
+   rule, which is exactly what "left-aligned instead of centered" needs. */
+.section-align-left > .container{margin-left:0;}
+@media (min-width:900px){.section-align-left .stats-grid,.section-align-left .testimonial-grid,.section-align-left .key-facts-grid,.section-align-left .feature-grid,.section-align-left .gallery-grid{justify-content:start;}}
 
 /* Row-pairing: exactly 2 explicit columns, no spans -- each paired section's
    own .container naturally clamps to its ~50% grid cell width since a block
@@ -184,6 +199,13 @@ section{padding:var(--space-7) 0;}
 @media (min-width:900px){.about-inner{grid-template-columns:1fr 1fr;}}
 .about-content{display:flex;flex-direction:column;gap:var(--space-2);}
 .about-visual .hero-visual-frame svg{max-width:360px;margin:0 auto;}
+
+/* about variant: text-only -- no visual gets rendered (only one grid child),
+   so the 2-column grid must collapse to a single centered column instead of
+   leaving half the row empty. reversed needs no extra CSS: the JS side
+   already swaps HTML source order, and grid just follows DOM order. */
+.about-variant-text-only .about-inner{grid-template-columns:1fr;max-width:70ch;margin:0 auto;text-align:center;}
+.about-variant-text-only .about-content{align-items:center;}
 
 /* CTA banner */
 .section-cta_banner{background:var(--color-primary);color:#fff;border-radius:var(--radius-lg);}
@@ -416,8 +438,9 @@ input.is-invalid,textarea.is-invalid{border-color:#DC2626;}
   top: 0;
   z-index: 100;
   background-color: var(--color-bg);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow 0.3s ease, padding 0.3s ease;
 }
 
 
@@ -426,230 +449,230 @@ input.is-invalid,textarea.is-invalid{border-color:#DC2626;}
 }
 
 
-.nav-toggle {
-  cursor: pointer;
-  z-index: 102;
+.site-logo {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: opacity 0.2s ease;
 }
 
 
-.nav-toggle:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
+.nav-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 101;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
 .site-nav {
-  font-size: 0.95rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 
 .site-footer {
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  margin-top: auto;
 }
 
 
-.btn, .btn-primary, .btn-secondary {
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+.btn {
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 
-.btn:hover, .btn-primary:hover, .btn-secondary:hover {
+.btn:hover {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+}
+
+
+.btn:hover::after {
+  left: 100%;
 }
 
 
 .section-hero {
-  background-color: var(--color-surface);
-  padding: calc(var(--space-8) * 2) 0;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - var(--space-8));
+  display: flex;
+  align-items: center;
 }
 
 
 .hero-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
-@media (min-width: 768px){
 
-  .hero-inner {
-    flex-direction: row;
-    text-align: left;
-    justify-content: space-between;
-    gap: var(--space-6);
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 
 .hero-subheadline {
-  margin-bottom: calc(var(--space-4) * 1.5);
-  font-weight: 300;
   color: var(--color-text-muted);
+  font-weight: 400;
+  max-width: 65ch;
 }
 
 
-.hero-visual {
-  width: 100%;
-  max-width: 600px;
-}
-@media (min-width: 768px){
-
-  .hero-visual {
-    flex: 1;
-    min-height: 40vh;
-  }
-}
-@media (min-width: 768px){
+.section-about {
+  background-color: var(--color-surface);
 }
 
 
-.about-inner, .feature-grid, .service-grid, .gallery-grid, .team-grid, .pricing-grid, .testimonial-grid, .stats-grid, .cta-inner, form-field, intro-body, article-inner, key-facts-grid, timeline-list, sources-list, newsletter-inner {
-  max-width: calc(var(--container-max) - var(--space-4));
-  margin: 0 auto;
+.about-content h2 {
+  margin-bottom: var(--space-4);
 }
 
 
-.feature-item:hover, .service-item:hover, .gallery-item:hover, .team-item:hover, .pricing-card:hover, .testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.card-link-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid var(--color-accent);
+  transition: all 0.3s ease;
 }
 
 
-.is-featured {
-  border: 2px solid var(--color-primary);
+.card-link:hover .card-link-arrow::before {
+  left: -16px;
+  width: 12px;
+  height: 12px;
 }
 
 
-.price {
-  font-size: 1.5rem;
-  color: var(--color-text);
-}
-
-
-.pricing-features {
-  margin-top: var(--space-4);
+.pricing-features li {
+  color: var(--color-text-muted);
+  font-size: 0.9em;
 }
 
 
 .testimonial-card {
   position: relative;
-  overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 
 .testimonial-card::before {
+  content: """;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 15rem;
+  line-height: 1;
+  color: var(--color-border);
+  opacity: 0.6;
+}
+
+
+.section-faq .faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+
+.faq-item summary {
+  cursor: pointer;
+  outline: none;
+}
+
+
+.faq-item[aria-expanded="true"] summary::after {
+  transform: rotate(180deg);
+}
+
+
+.section-stats .stat-number {
+  background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.cta-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.cta-inner::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: var(--color-primary);
-  opacity: 0.2;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 
 
-.faq-list {
-  margin-top: var(--space-6);
-}
-
-
-.faq-item {
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--space-4);
-}
-
-
-.section-cta_banner {
-  background-color: var(--color-surface);
-  text-align: center;
-}
-
-
-.cta-inner {
-  max-width: calc(var(--container-max) - var(--space-4));
-  margin: 0 auto;
-}
-
-
-.form-field:focus-within + label, .form-field:focus-within ~ label {
-  color: var(--color-primary);
-}
-
-
-.field-error {
-  animation: shake 0.3s ease-in-out;
-}
-
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
-}
-
-
-.grid, .grid-2, .grid-3, .grid-4 {
+.grid-2, .grid-3, .grid-4 {
   display: grid;
   gap: var(--space-6);
 }
 @media (min-width: 768px){
 
-  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
-}
-@media (min-width: 1024px){
-
-  .grid-2 { gap: var(--space-8); }
-
-  .grid-3 { gap: var(--space-8); }
-
-  .grid-4 { gap: var(--space-8); }
-}
-
-
-.page-header, .page-header-subtitle {
-  margin-bottom: calc(var(--space-6) * 1.5);
-}
+  
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
 
-.hero-visual-frame {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
+  .site-header {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+  }
 
 
-.card-link {
-  display: block;
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  transition: background-color 0.2s ease-in-out;
-}
+  .hero-inner {
+    animation-duration: 1.2s;
+  }
 
 
-.card-link:hover, .card-link:focus-visible {
-  background-color: var(--color-surface);
-}
+  .pricing-card.is-featured {
+    transform: scale(1.05);
+    z-index: 1;
+  }
 
 
-.card-link-arrow {
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-
-.card-link:hover .card-link-arrow, .card-link:focus-visible .card-link-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-@media (min-width: 768px){
+  .cta-inner::before {
+    height: 6px;
+  }
 }
