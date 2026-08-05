@@ -1,86 +1,98 @@
 <!DOCTYPE html>
+<!-- DEBUG-ONLY (strip before production):
+     sources: https://www.anthropic.com/, https://www.anthropic.com/news/introducing-claude
+     research_layout_hints: none for this page (creative fallback used)
+     typography: hash-fallback
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Models &amp; Configurator | Apex Automotive</title>
-  <meta name="description" content="Engineering Purity. Defining Performance.">
+  <title>Anthropic Model Architecture &amp; Releases</title>
+  <meta name="description" content="Building AI to serve humanity's long-term well-being.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="mode-light">
+<body class="mode-light typography-bold-editorial">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Apex Automotive"><svg viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='0%'><stop offset='0%' style='stop-color:currentColor;stop-opacity:1' /><stop offset='50%' style='stop-color:currentColor;stop-opacity:0.8' /><stop offset='100%' style='stop-color:currentColor;stop-opacity:1' /></linearGradient></defs><path d='M32 4v16h-8v-8H16V4h16zm0 24c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z' fill='currentColor'/><path d='M74 16c0-4.418-3.582-8-8-8s-8 3.582-8 8v8h-4V4h16v16h-6z' fill='currentColor'/><path d='M96 4v16h-4v-4c0-4.418-3.582-8-8-8s-8 3.582-8 8v8h-4V4h16zm0 24c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z' fill='currentColor'/><text x='96' y='14' font-family='Arial, sans-serif' font-weight='bold' font-size='20' letter-spacing='-1' fill='currentColor'>APEX</text><path d='M136 4v16h-8V4h8zm0 24c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z' fill='currentColor'/><text x='144' y='14' font-family='Arial, sans-serif' font-weight='bold' font-size='20' letter-spacing='-1' fill='currentColor'>AUTOMOTIVE</text></svg></a>
+      <a href="index.html" class="site-logo" aria-label="Anthropic"><svg viewBox='0 0 160 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.5 8L16 10V12H9.5L10 20H16L16 18H22.5L28 20V18H34.5L29 16L23.5 20L18 18L17 20H11.5L10.5 8ZM18 14L22 16L26 14V12L22 14L18 12V14Z' fill='currentColor'/><text x='36' y='25.2' font-family='sans-serif' font-size='20' font-weight='bold' fill='currentColor'>Anthropic</text></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
-      <a href="models.html">Models</a>
-      <a href="heritage.html">Heritage</a>
       <a href="index.html">Home</a>
-      <a href="contact.html">Contact &amp; Concierge</a>
+      <a href="models.html">Models</a>
+      <a href="constitution.html">Constitution</a>
+      <a href="research.html">Research</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="select-your-model" class="page-header">
+    <section class="section-table_of_contents">
   <div class="container">
-    <h1>Select Your Model</h1>
-    <p class="page-header-subtitle">Choose between the Turbo, GT, or GT RS variants to match your driving style.</p>
+    <h2>Navigation Index</h2>
+    <ol class="toc-list">
+    <li><a href="#architecture-overview">Architecture Overview</a></li>
+    <li><a href="#performance-metrics">Performance Metrics</a></li>
+    <li><a href="#developer-questions">Developer Questions</a></li>
+    </ol>
   </div>
 </section>
 
-<section id="customization-studio" class="section-features section-band-a">
+<div class="section-pair-row">
+<section id="architecture-overview" class="section-article_section article-variant-lead-highlight section-band-a">
+  <div class="container article-inner" data-reveal>
+    <h2>Architecture Overview</h2>
+    <p class="lead-paragraph">Our model family is structured to balance raw intelligence with safety alignment. Each tier—Opus, Sonnet, and Haiku—is optimized for different throughput needs while maintaining strict adherence to our Constitutional AI framework.</p><p>Reasoning capabilities have expanded significantly in recent versions, allowing the system to handle multi-step logic chains without losing context or accuracy. We maintain a high bar for honesty, ensuring that when information is uncertain, the model explicitly states its limitations rather than hallucinating facts.</p>
+  </div>
+</section>
+<section id="performance-metrics" class="section-key_facts key-facts-variant-strip section-band-b">
   <div class="container">
-    <h2>Customization Studio</h2>
-    <ul class="feature-grid grid grid-3 grid-variant-uniform">
-    <li class="card icon-card feature-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 2l-5.5 9h11z' fill='none' stroke='currentColor' stroke-width='2'/><circle cx='12' cy='14' r='8' fill='none' stroke='currentColor' stroke-width='2'/><rect x='6' y='7' width='12' height='10' rx='2' fill='none' stroke='currentColor' stroke-width='2'/></svg></div>
-      <h3>Paint &amp; Trim Selection</h3>
-      
-      <p>Select from twenty metallic finishes or matte wraps, paired with carbon fiber or aluminum wheels.</p>
+    <h2>Performance Metrics</h2>
+    <ul class="key-facts-strip">
+    <li class="key-fact-strip-item" data-reveal>
+      <span class="key-fact-label">Opus 5 Throughput</span>
+      <span class="key-fact-value">Optimized for heavy-compute reasoning tasks</span>
     </li>
-    <li class="card icon-card feature-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M2 12h8l2-6 5 12h6V12z' fill='none' stroke='currentColor' stroke-width='2'/><circle cx='9' cy='14' r='2' fill='none' stroke='currentColor' stroke-width='2'/><path d='M10 18l-3-3m3 3l3-3' fill='none' stroke='currentColor' stroke-width='2'/></svg></div>
-      <h3>Interior Architecture</h3>
-      
-      <p>Mix and match leather seats, wood trims, and ambient lighting to define your cabin.</p>
+    <li class="key-fact-strip-item" data-reveal>
+      <span class="key-fact-label">Sonnet 5 Latency</span>
+      <span class="key-fact-value">Balanced speed for general production workloads</span>
+    </li>
+    <li class="key-fact-strip-item" data-reveal>
+      <span class="key-fact-label">Haiku Efficiency</span>
+      <span class="key-fact-value">High throughput for simple queries and batch processing</span>
     </li>
     </ul>
   </div>
 </section>
+</div>
 
-<section id="model-comparison" class="section-features section-band-b">
+<section id="developer-questions" class="section-faq faq-variant-numbered section-band-a section-width-narrow">
   <div class="container">
-    <h2>Model Comparison</h2>
-    <ul class="feature-grid grid grid-3 grid-variant-staggered">
-    <li class="card icon-card feature-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19.75 16.8l-3 3a1 1 0 01-1.41 0l-3-3V9.83L11 7v2h2v2H11v2h2v2H11v2h2v2H11v2h2v2' fill='none' stroke='currentColor' stroke-width='2'/><path d='M4.5 16.5L3 8l4.5-4.5L12 13l4.5-4.5L21 8l-1.5 8.5' fill='none' stroke='currentColor' stroke-width='2'/></svg></div>
-      <h3>Turbo vs GT RS Specs</h3>
-      
-      <p>Compare acceleration times, power output, and aerodynamic efficiency side-by-side.</p>
+    <h2>Developer Questions</h2>
+    <ul class="faq-numbered">
+    <li class="faq-numbered-item" data-reveal>
+      <span class="faq-number">1</span>
+      <div class="faq-numbered-content">
+        <h3>How do I integrate Claude into my existing API?</h3>
+        <p>Use our standard RESTful endpoints. We provide comprehensive SDKs for Python, Node.js, and Go to simplify integration.</p>
+      </div>
     </li>
-    </ul>
-  </div>
-</section>
-
-<section id="in-action-gallery" class="section-gallery section-band-a">
-  <div class="container">
-    <h2>In Action Gallery</h2>
-    <ul class="gallery-grid grid grid-3 grid-variant-staggered">
-    <li class="card icon-card gallery-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 3v9m-6-3l6-6m0 0l6 6m-6-6v9' fill='none' stroke='currentColor' stroke-width='2'/><circle cx='7' cy='18' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M3 20h18' stroke='currentColor' stroke-width='2'/></svg></div>
-      <h3>Night City Drive</h3>
-      
-      <p>Headlights cutting through the fog of a Berlin boulevard.</p>
+    <li class="faq-numbered-item" data-reveal>
+      <span class="faq-number">2</span>
+      <div class="faq-numbered-content">
+        <h3>What are the current rate limits for enterprise accounts?</h3>
+        <p>Enterprise customers can negotiate custom throughput agreements that exceed standard public tier limits.</p>
+      </div>
     </li>
-    <li class="card icon-card gallery-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M5 19l6-7v-4l8 11V9L6.5 12l-.5 7z' fill='none' stroke='currentColor' stroke-width='2'/><path d='M12 3a2 2 0 100 4 2 2 0 000-4z' fill='none' stroke='currentColor' stroke-width='2'/></svg></div>
-      <h3>Mountain Pass</h3>
-      
-      <p>Navigating switchbacks on the Alps with precision handling.</p>
+    <li class="faq-numbered-item" data-reveal>
+      <span class="faq-number">3</span>
+      <div class="faq-numbered-content">
+        <h3>How do I handle prompt engineering for complex logic?</h3>
+        <p>Our documentation includes a library of pattern-based templates designed to elicit structured reasoning from the model.</p>
+      </div>
     </li>
     </ul>
   </div>
@@ -89,12 +101,12 @@
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Apex Automotive. All rights reserved.</p>
+      <p>&copy; 2026 Anthropic. All rights reserved.</p>
       <nav class="footer-nav">
-      <a href="models.html">Models</a>
-      <a href="heritage.html">Heritage</a>
       <a href="index.html">Home</a>
-      <a href="contact.html">Contact &amp; Concierge</a>
+      <a href="models.html">Models</a>
+      <a href="constitution.html">Constitution</a>
+      <a href="research.html">Research</a>
       </nav>
     </div>
   </footer>
