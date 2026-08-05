@@ -1,32 +1,53 @@
 <!DOCTYPE html>
+<!-- research_layout_hints: hero:split-right -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Porsche 911</title>
-  <meta name="description" content="Contact the Porsche 911 team for inquiries about the GT3 RS and other models.">
+  <title>Contact &amp; Concierge | LUMINA</title>
+  <meta name="description" content="Beauty Without Borders">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="mode-light typography-bold-editorial">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Porsche 911"><svg viewBox='0 0 160 40' xmlns="http://www.w3.org/2000/svg"><path d="M5,20 L5,28 L10,29.5 L10,35 L15,35 L15,28 L20,29.5 L20,35 L25,35 L25,28 L30,26.5 L40,26.5 L40,28 L45,29.5 L45,35 L50,35 L50,28 L55,26.5 L70,26.5 L70,28 L75,29.5 L75,35 L80,35 L80,28 L85,29.5 L85,35 L90,35 L90,28 L95,26.5 L100,26.5 L100,28 L105,29.5 L105,35 L110,35 L110,28 L115,26.5 L130,26.5 L130,28 L135,29.5 L135,35 L140,35 L140,28 L145,26.5 M8,27 L8,23 M23,27 L23,23 M38,27 L38,23 M53,27 L53,23 M68,27 L68,23 M83,27 L83,23 M98,27 L98,23 M113,27 L113,23"/></svg></a>
+      <a href="index.html" class="site-logo" aria-label="LUMINA"><svg viewBox='0 0 160 40' fill='none' xmlns="http://www.w3.org/2000/svg"><path d="M10 20C10 17.8 11.8 16 14 16H146C154.3 16 160 21.7 160 30V36H14V4" stroke='currentColor' stroke-width='2.5'/><path d="M28 16L32 22L38 18L44 24L50 18L56 24L62 18L66 22L70 16" stroke='currentColor' stroke-width='2.5'/><path d="M90 20C90 23.3 92.7 26 96 26H146C154.3 26 160 20.3 160 12V8H14V12C14 20.3 19.7 26 28 26Z" stroke='currentColor' stroke-width='2'/></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
       <a href="index.html">Home</a>
-      <a href="contact.html">Contact</a>
+      <a href="shop.html">Shop</a>
+      <a href="collections.html">Collections</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact &amp; Concierge | LUMINA</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="request-a-private-viewing" class="section-contact_form">
+    <section id="direct-access" class="page-header">
   <div class="container">
-    <h2>Request a Private Viewing</h2>
-    <p class="form-intro">Our concierge team is available to arrange an appointment at your local dealership or private test track.</p>
+    <h1>Direct Access</h1>
+    <p class="page-header-subtitle">Speak with our concierge team for personalized advice.</p>
+  </div>
+</section>
+
+<section id="concierge-service-details" class="section-about about-variant-text-only section-band-a">
+  <div class="container about-inner">
+    <div class="about-content" data-reveal>
+      <h2>Concierge Service Details</h2>
+      <p>Our private concierge team is available to assist with custom regimen building, product restocking, and special requests. We prioritize your privacy and ensure every interaction remains discreet and professional.</p>
+    </div>
+    <div class="about-visual"><div class="hero-visual-frame"><svg viewBox='0 0 500 400' fill='none' xmlns="http://www.w3.org/2000/svg"><path d="M180 260C180 260 170 290 150 310L130 330L110 310C90 290 80 260 80 260" stroke='currentColor' stroke-width='4'/><path d="M200 250H300V280H200Z" fill='none' stroke='currentColor' stroke-width='4'/><path d="M210 250L290 270" stroke='currentColor' stroke-width='6' stroke-linecap='round'/><circle cx='320' cy='280' r='40' fill='none' stroke='currentColor' stroke-width='4'/><path d="M320 240V280M300 260H340" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><circle cx='150' cy='120' r='60' fill='none' stroke='currentColor' stroke-width='3'/><path d="M170 80L190 60" stroke='currentColor' stroke-width='4' stroke-linecap='round'/><path d="M190 80L210 60" stroke='currentColor' stroke-width='4' stroke-linecap='round'/><circle cx='350' cy='100' r='40' fill='none' stroke='currentColor' stroke-width='2'/><path d="M360 90L380 70" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><path d="M380 100L360 85" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><circle cx='420' cy='180' r='30' fill='none' stroke='currentColor' stroke-width='2'/><path d="M420 170L435 160" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><path d="M435 180L420 170" stroke='currentColor' stroke-width='3' stroke-linecap='round'/></svg></div></div>
+  </div>
+</section>
+
+<section id="send-an-inquiry" class="section-contact_form">
+  <div class="container">
+    <h2>Send an Inquiry</h2>
+    <p class="form-intro">Use the form below for press requests, wholesale inquiries, or general support.</p>
     <form novalidate>
       <div class="form-field">
         <label for="name">Full Name</label>
@@ -43,63 +64,21 @@
         <textarea id="message" name="message" rows="5" required></textarea>
         <span class="field-error" data-error-for="message"></span>
       </div>
-      <button type="submit" class="btn btn-primary">Send Request</button>
+      <button type="submit" class="btn btn-primary">Transmit Message</button>
     </form>
-  </div>
-</section>
-
-<section id="contact-info" class="section-team section-band-a">
-  <div class="container">
-    <h2>Contact Information</h2>
-    <ul class="team-grid grid grid-3 grid-variant-featured-first">
-    <li class="card icon-card team-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19Z"/><circle cx="7" cy="16" r="1.5" fill="currentColor"/><circle cx="17" cy="16" r="1.5" fill="currentColor"/></svg></div>
-      <h3>Phone</h3>
-      <p class="team-role">+49 800 260 4600</p>
-      <p>Mon-Fri: 8am - 7pm CET</p>
-    </li>
-    <li class="card icon-card team-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><path d="M7,18C5.34,18 4,16.66 4,15C4,13.34 5.34,12 7,12C8.66,12 10,13.34 10,15C10,16.66 8.66,18 7,18M17,18C15.34,18 14,16.66 14,15C14,13.34 15.34,12 17,12C18.66,12 20,13.34 20,15C20,16.66 18.66,18 17,18M9,2H15V8H9V2Z" fill="currentColor"/><path d="M12,22A2,2 0 0,0 14,20C14,19.31 13.6,18.76 13,18.5L12,18L11,18.5C10.4,18.76 10,19.31 10,20A2,2 0 0,0 12,22M12,4C8.13,4 5,6.13 5,9V10H19V9C19,6.13 15.87,4 12,4Z"/></svg></div>
-      <h3>Email</h3>
-      <p class="team-role">contact@porsche-911.com</p>
-      <p>For all inquiries and support.</p>
-    </li>
-    <li class="card icon-card team-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19Z"/><circle cx="7" cy="16" r="1.5" fill="currentColor"/><circle cx="17" cy="16" r="1.5" fill="currentColor"/></svg></div>
-      <h3>Address</h3>
-      <p class="team-role">Porsche AG</p>
-      <p>Porscheplatz 1, 70435 Stuttgart</p>
-    </li>
-    </ul>
-  </div>
-</section>
-
-<section class="section-stats stats-variant-inline-band section-band-b section-width-narrow">
-  <div class="container">
-    <ul class="stats-strip">
-    <li class="stat-strip-item" data-reveal>
-      <span class="stat-number">24/7</span>
-      <span class="stat-label">Support Available</span>
-    </li>
-    <li class="stat-strip-item" data-reveal>
-      <span class="stat-number">Global</span>
-      <span class="stat-label">Dealership Network</span>
-    </li>
-    <li class="stat-strip-item" data-reveal>
-      <span class="stat-number">100%</span>
-      <span class="stat-label">Customer Satisfaction</span>
-    </li>
-    </ul>
   </div>
 </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Porsche 911. All rights reserved.</p>
+      <p>&copy; 2026 LUMINA. All rights reserved.</p>
       <nav class="footer-nav">
       <a href="index.html">Home</a>
-      <a href="contact.html">Contact</a>
+      <a href="shop.html">Shop</a>
+      <a href="collections.html">Collections</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact &amp; Concierge | LUMINA</a>
       </nav>
     </div>
   </footer>
