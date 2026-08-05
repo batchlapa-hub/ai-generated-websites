@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<!-- research_layout_hints: hero:split-left | typography: hash-fallback -->
+<!-- DEBUG-ONLY (strip before production):
+     sources: https://makeupstorecosmetics.com/, https://www.maccosmetics.com/home, https://www.ulta.com/shop/makeup, https://makeupstore.pt/news/6406/, https://www.instagram.com/wwwmakeup.portugal/, https://www.topconsumerreviews.com/best-beauty-stores/index.php, https://www.narscosmetics.com/, https://makeupstore.pt/, https://makeupstore.pt/about-us/, https://www.makebeauty.com/, https://makeupstorecosmetics.com/pages/about-us, https://global.nyxcosmetics.com/, https://themakeupstoreonline.com/, https://www.lagirlusa.com/, https://camerareadycosmetics.com/, https://www.ulta.com/, https://www.cosmopolitan.com/style-beauty/g39501311/online-makeup-stores/, https://www.topconsumerreviews.com/best-beauty-stores/detailed-reviews.php, https://www.ulta.com/shop/makeup/all, https://www.topconsumerreviews.com/best-makeup-stores/detailed-reviews.php, https://makeupstore.com/, https://makeupstore.pt/delivery/, https://makeupstore.com/about-us/, https://www.kikocosmetics.com/en-us/, https://www.makeup-store.com/shop/, https://makeupstore.pt/categorys/3/, https://www.instagram.com/makeupstore/, https://makeupstore.pt/rules/, https://makeupstore.pt/actions/, https://makeupstore.pt/feedback/
+     research_layout_hints: hero:split-left
+     typography: hash-fallback
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Nordic Luxe</title>
-  <meta name="description" content="Scandinavian Minimalist Beauty for the Modern Professional">
+  <title>Contact Us - Beauty Without Borders</title>
+  <meta name="description" content="Scandinavian Luxury. Timeless Beauty.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="mode-light typography-bold-editorial">
+<body class="mode-light typography-classic">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Nordic Luxe"><svg viewBox='0 0 160 40' fill='none' xmlns='http://www.w3.org/2000/svg'><text x='0' y='25' font-family='Georgia, serif' font-size='24' font-weight='bold' fill='currentColor'>NORDIC LUXE</text><rect x='140' y='8' width='6' height='16' rx='3' fill='currentColor'/></svg></a>
+      <a href="index.html" class="site-logo" aria-label="Beauty Without Borders"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40"><text x="0" y="28" font-size="24" font-weight="700" fill="currentColor">Beauty Without Borders</text></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -29,24 +33,14 @@
     <section id="get-in-touch" class="page-header">
   <div class="container">
     <h1>Get in Touch</h1>
-    <p class="page-header-subtitle">We are here to help you find your perfect match.</p>
-  </div>
-</section>
-
-<section id="customer-care-information" class="section-about about-variant-text-only section-band-a">
-  <div class="container about-inner">
-    <div class="about-content" data-reveal>
-      <h2>Customer Care Information</h2>
-      <p>Our dedicated support team is available Monday through Friday from 9am to 6pm local time. Whether you have questions about product suitability, shipping timelines, or returning an item, simply fill out the form below and we will respond within two business hours.</p>
-    </div>
-    <div class="about-visual"><div class="hero-visual-frame"><svg viewBox='0 0 500 400' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M250 60v180l-70-70V190h140v-60L250 60z' fill='currentColor'/><rect x='180' y='130' width='140' height='140' rx='10' stroke='currentColor' stroke-width='4'/><circle cx='270' cy='190' r='40' fill='none' stroke='currentColor' stroke-width='2'/><path d='M300 180v50h-60V180l-30-30h90z' fill='currentColor'/><rect x='185' y='135' width='130' height='130' stroke='none'/></svg></div></div>
+    <p class="page-header-subtitle">Questions about your order or product inquiries? We are here to help.</p>
   </div>
 </section>
 
 <section id="send-us-a-message" class="section-contact_form">
   <div class="container">
     <h2>Send Us a Message</h2>
-    <p class="form-intro">Fill in your details so our team can assist you with any inquiries.</p>
+    <p class="form-intro">Fill out the form below and our support team will respond within 24 hours.</p>
     <form novalidate>
       <div class="form-field">
         <label for="name">Full Name</label>
@@ -65,13 +59,53 @@
       </div>
       <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
+
+    <section id="contact-info" class="section-contact_info section-band-b">
+      <div class="container">
+        <h2>Contact Information</h2>
+        <p>Prefer to reach us directly? You can contact our support team via the channels below.</p>
+        <ul class="info-grid grid grid-3">
+          <li class="card icon-card feature-item" data-reveal>
+            <div class="icon-wrapper"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 9H17v-2h-6v2H6.5l-1.5 2h18zm-18 4h13v2h4.5l1.5-2h-19z" fill="currentColor"/></svg></div>
+            <h3>Email Us</h3>
+            <p>support@beautywithoutborders.com</p>
+          </li>
+          <li class="card icon-card feature-item" data-reveal>
+            <div class="icon-wrapper"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg></div>
+            <h3>Call Us</h3>
+            <p>+45 12 34 56 78</p>
+          </li>
+          <li class="card icon-card feature-item" data-reveal>
+            <div class="icon-wrapper"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg></div>
+            <h3>Visit Us</h3>
+            <p>Nørrebrogade 10, 1780 Frederiksberg C<br>Copenhagen, Denmark</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq-contact" class="section-faq section-band-a">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <ul class="faq-grid grid grid-2">
+          <li class="card faq-card" data-reveal>
+            <h3>How long does shipping take?</h3>
+            <p>We ship within 1-2 business days. Standard delivery takes 3-5 working days to most locations.</p>
+          </li>
+          <li class="card faq-card" data-reveal>
+            <h3>Do you offer international shipping?</h3>
+            <p>Yes, we ship worldwide with customs duties calculated at checkout for eligible regions.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
 </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Nordic Luxe. All rights reserved.</p>
+      <p>&copy; 2026 Beauty Without Borders. All rights reserved.</p>
       <nav class="footer-nav">
       <a href="index.html">Home</a>
       <a href="shop-all.html">Shop All</a>
