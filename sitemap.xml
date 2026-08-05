@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <url>
-    <loc>https://scandi-luxe.com/index.html</loc>
+    <loc>https://www.nordicluxe.com/index.html</loc>
     <lastmod>2023-10-27</lastmod>
-    <priority>1.0</priority>
+    <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://scandi-luxe.com/shop.html</loc>
+    <loc>https://www.nordicluxe.com/shop-all.html</loc>
     <lastmod>2023-10-27</lastmod>
-    <priority>0.9</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://scandi-luxe.com/about.html</loc>
+    <loc>https://www.nordicluxe.com/about.html</loc>
     <lastmod>2023-10-27</lastmod>
-    <priority>0.8</priority>
+    <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://scandi-luxe.com/contact.html</loc>
+    <loc>https://www.nordicluxe.com/contact.html</loc>
     <lastmod>2023-10-27</lastmod>
-    <priority>0.7</priority>
+    <priority>0.60</priority>
   </url>
 </urlset>
