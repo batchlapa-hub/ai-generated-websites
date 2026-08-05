@@ -86,36 +86,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Optional Enhancement: Single-open behavior for FAQ items
+  // Optional Enhancement: Single-open-at-a-time behavior for FAQ items
   const faqItems = document.querySelectorAll('.faq-item');
-
-  if (faqItems.length > 0) {
-    faqItems.forEach(item => {
-      const summary = item.querySelector('summary');
+  
+  faqItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Close all other open items first
+      this.parentElement.querySelectorAll('.faq-item[open]').forEach(otherItem => {
+        if (otherItem !== this) {
+          otherItem.removeAttribute('open');
+        }
+      });
       
-      if (summary) {
-        summary.addEventListener('click', function(e) {
-          e.preventDefault(); // Prevent native toggle behavior for manual control
-          
-          const details = this.parentElement;
-          const isOpen = details.classList.contains('open');
-
-          // Close all other open FAQs
-          faqItems.forEach(otherItem => {
-            if (otherItem !== details) {
-              const otherSummary = otherItem.querySelector('summary');
-              if (otherSummary && otherSummary.getAttribute('aria-expanded') === 'true') {
-                otherSummary.setAttribute('aria-expanded', 'false');
-                otherItem.classList.remove('open');
-              }
-            }
-          });
-
-          // Toggle current item
-          this.setAttribute('aria-expanded', !isOpen);
-          details.classList.toggle('open', !isOpen);
-        });
+      // Toggle current item
+      const isOpen = this.hasAttribute('open');
+      if (!isOpen) {
+        this.setAttribute('open', '');
+      } else {
+        this.removeAttribute('open');
       }
     });
+  });
+
+  // Optional Enhancement: Simple autoplay/rotation for Testimonial Grid (if 3+ items exist)
+  const testimonialGrid = document.querySelector('.testimonial-grid');
+  
+  if (testimonialGrid && testimonialGrid.children.length >= 3) {
+    let currentIndex = 0;
+    const testimonials = Array.from(testimonialGrid.children);
+    
+    // Fade out current
+    function fadeOut() {
+      const currentItem = testimonials[currentIndex];
+      if (currentItem && currentItem.style.opacity !== '0') {
+        currentItem.style.transition = 'opacity 0.5s ease';
+        currentItem.style.opacity = '0';
+      }
+      
+      // Wait for fade out, then switch and fade in
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        const nextItem = testimonials[currentIndex];
+        
+        if (nextItem && nextItem.style.opacity !== '1') {
+          nextItem.style.transition = 'opacity 0.5s ease';
+          nextItem.style.opacity = '1';
+        }
+      }, 500); // Match fade out duration
+    }
+
+    // Start rotation after a short delay
+    setTimeout(fadeOut, 3000);
+    
+    // Rotate every 8 seconds (adjustable)
+    setInterval(fadeOut, 8000);
   }
 });
