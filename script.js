@@ -86,50 +86,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Optional Enhancement: Single-open-at-a-time behavior for FAQ items
+  // FAQ: Ensure only one detail is open at a time
   const faqItems = document.querySelectorAll('.faq-item');
-
   faqItems.forEach(item => {
-    const summary = item.querySelector('summary');
-    
-    if (summary) {
-      summary.addEventListener('click', () => {
-        // Close all other open FAQs in the same container
-        const parentContainer = item.closest('.faq-container') || document;
-        parentContainer.querySelectorAll('.faq-item[open]').forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.removeAttribute('open');
-          }
-        });
-      });
-    }
+    item.addEventListener('click', function() {
+      if (this.classList.contains('active')) return;
+
+      // Close all others
+      faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+      
+      // Open clicked one
+      this.classList.add('active');
+    });
   });
 
-  // Optional Enhancement: Simple autoplay/rotation for Testimonial Grid (if 3+ items exist)
+  // Testimonials: Simple rotation for grids with 3+ items
   const testimonialGrid = document.querySelector('.testimonial-grid');
-  
   if (testimonialGrid && testimonialGrid.children.length >= 3) {
     let currentIndex = 0;
-    const testimonials = Array.from(testimonialGrid.children);
     
-    // Fade out current, wait, fade in next
     setInterval(() => {
-      const currentItem = testimonials[currentIndex];
+      const items = Array.from(testimonialGrid.children);
       
-      if (currentItem) {
-        currentItem.style.opacity = '0';
-        currentItem.style.transform = 'translateY(-10px)';
+      // Hide all
+      items.forEach(item => item.style.opacity = '0');
+      
+      setTimeout(() => {
+        // Rotate index
+        currentIndex = (currentIndex + 1) % items.length;
         
-        setTimeout(() => {
-          currentIndex = (currentIndex + 1) % testimonials.length;
-          const nextItem = testimonials[currentIndex];
-          
-          if (nextItem) {
-            nextItem.style.opacity = '1';
-            nextItem.style.transform = 'translateY(0)';
-          }
-        }, 500); // Match fade-out duration
-      }
-    }, 4000); // Rotate every 4 seconds
+        // Show new active one
+        const newItem = items[currentIndex];
+        newItem.style.opacity = '1';
+      }, 300); // Wait for fade out
+    }, 4000); // Change every 4 seconds
   }
 });
