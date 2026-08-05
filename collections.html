@@ -1,84 +1,79 @@
 <!DOCTYPE html>
+<!-- research_layout_hints: hero:split-right, gallery:featured-first -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exclusive Collections | Aura</title>
-  <meta name="description" content="Modern Minimalism for the Discerning Eye">
+  <title>Collections | LUMINA</title>
+  <meta name="description" content="Beauty Without Borders">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="mode-light">
+<body class="mode-light typography-bold-editorial">
   <header class="site-header">
     <div class="container site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="Aura"><svg viewBox='0 0 160 40' xmlns="http://www.w3.org/2000/svg"><path d="M12.5 38L2 19l10.5-10h14v20H12.5zm14.5-20v6h14v-6h-14z" fill="none" stroke="currentColor" strokeWidth="2.5"/><path d="M38 2c0 3.31-2.69 6-6 6s-6-2.69-6-6 2.69-6 6-6 6 2.69 6 6zm-6 4c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"><animate attributeName='opacity' values='0;0.8;0.8;0' dur='3s' repeatCount='indefinite'/></path><text x='52' y='26' font-family='sans-serif' font-weight='700' font-size='24' letter-spacing='-1' fill="currentColor">AURA</text><rect x='98' width='32' height='2' fill="currentColor"/></svg></a>
+      <a href="index.html" class="site-logo" aria-label="LUMINA"><svg viewBox='0 0 160 40' fill='none' xmlns="http://www.w3.org/2000/svg"><path d="M10 20C10 17.8 11.8 16 14 16H146C154.3 16 160 21.7 160 30V36H14V4" stroke='currentColor' stroke-width='2.5'/><path d="M28 16L32 22L38 18L44 24L50 18L56 24L62 18L66 22L70 16" stroke='currentColor' stroke-width='2.5'/><path d="M90 20C90 23.3 92.7 26 96 26H146C154.3 26 160 20.3 160 12V8H14V12C14 20.3 19.7 26 28 26Z" stroke='currentColor' stroke-width='2'/></svg></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
       <a href="index.html">Home</a>
-      <a href="shop-all.html">Shop All</a>
+      <a href="shop.html">Shop</a>
       <a href="collections.html">Collections</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact &amp; Concierge | LUMINA</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="exclusive-collections" class="page-header">
+    <section id="seasonal-curations" class="page-header">
   <div class="container">
-    <h1>Exclusive Collections</h1>
-    <p class="page-header-subtitle">Discover our rotating series of limited availability drops.</p>
+    <h1>Seasonal Curations</h1>
+    <p class="page-header-subtitle">Thematic explorations of color, texture, and function.</p>
   </div>
 </section>
 
-<section id="collection-breakdown" class="section-features section-band-a">
+<section id="featured-sets" class="section-gallery section-band-a">
   <div class="container">
-    <h2>Collection Breakdown</h2>
-    <ul class="feature-grid grid grid-3 grid-variant-staggered">
-    <li class="card icon-card feature-item card-link" data-reveal>
-      <a class="card-link-inner" href="collections.html">
-        <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><rect x="5" y="7" width="14" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M4 19l6-6m-6 6h16m-12-6v10m0 0V5m-3 6h10" stroke="currentColor" strokeWidth="2"/></svg></div>
-      <h3>The Essential Edit</h3>
+    <h2>Featured Sets</h2>
+    <ul class="gallery-grid grid grid-3 grid-variant-uniform">
+    <li class="card icon-card gallery-item" data-reveal>
+      <div class="icon-wrapper"><svg viewBox='0 0 24 24' fill='none' xmlns="http://www.w3.org/2000/svg"><path d="M12 8V16" stroke='currentColor' stroke-width='2.5'/><circle cx='12' cy='19' r='7' stroke='currentColor' stroke-width='2'/></svg></div>
+      <h3>The Morning Routine Set</h3>
       
-      <p>Our core line featuring black and white staples.</p>
-        <span class="card-link-arrow" aria-hidden="true">Learn more &rarr;</span>
-      </a>
+      <p>Cleanser, toner, and day cream for resilient skin.</p>
     </li>
-    <li class="card icon-card feature-item" data-reveal>
-      <div class="icon-wrapper"><svg viewBox='0 0 24 24' xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/><circle cx="8" cy="19" r="1.5" fill="currentColor"/><path d="M6 10l-4 4h16l-4-4z" fill="none" stroke="currentColor" strokeWidth="2"/></svg></div>
-      <h3>Limited Drop Series</h3>
+    <li class="card icon-card gallery-item" data-reveal>
+      <div class="icon-wrapper"><svg viewBox='0 0 24 24' fill='none' xmlns="http://www.w3.org/2000/svg"><rect x='6' y='2' width='12' height='20' rx='2' stroke='currentColor' stroke-width='2'/><circle cx='12' cy='17' r='4.5' fill='currentColor'/></svg></div>
+      <h3>Weekend Reset Kit</h3>
       
-      <p>Seasonal pieces produced in strictly limited quantities.</p>
+      <p>Mask and oil combination for deep hydration.</p>
     </li>
     </ul>
   </div>
 </section>
 
-<section class="section-stats section-band-b section-width-narrow">
-  <div class="container">
-    <ul class="stats-grid grid grid-4">
-    <li class="stat" data-reveal>
-      <span class="stat-number">500+</span>
-      <span class="stat-label">Units Per Season</span>
-    </li>
-    <li class="stat" data-reveal>
-      <span class="stat-number">12 Months</span>
-      <span class="stat-label">Exclusive Window Availability</span>
-    </li>
-    </ul>
+<section id="curated-exclusivity" class="section-about about-variant-text-only section-band-b">
+  <div class="container about-inner">
+    <div class="about-content" data-reveal>
+      <h2>Curated Exclusivity</h2>
+      <p>Our collections are not merely grouped by function; they are assembled based on a specific skin narrative. Each set tells a story of transformation, moving from purification to protection with precision.</p>
+    </div>
+    <div class="about-visual"><div class="hero-visual-frame"><svg viewBox='0 0 500 400' fill='none' xmlns="http://www.w3.org/2000/svg"><path d="M180 260C180 260 170 290 150 310L130 330L110 310C90 290 80 260 80 260" stroke='currentColor' stroke-width='4'/><path d="M200 250H300V280H200Z" fill='none' stroke='currentColor' stroke-width='4'/><path d="M210 250L290 270" stroke='currentColor' stroke-width='6' stroke-linecap='round'/><circle cx='320' cy='280' r='40' fill='none' stroke='currentColor' stroke-width='4'/><path d="M320 240V280M300 260H340" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><circle cx='150' cy='120' r='60' fill='none' stroke='currentColor' stroke-width='3'/><path d="M170 80L190 60" stroke='currentColor' stroke-width='4' stroke-linecap='round'/><path d="M190 80L210 60" stroke='currentColor' stroke-width='4' stroke-linecap='round'/><circle cx='350' cy='100' r='40' fill='none' stroke='currentColor' stroke-width='2'/><path d="M360 90L380 70" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><path d="M380 100L360 85" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><circle cx='420' cy='180' r='30' fill='none' stroke='currentColor' stroke-width='2'/><path d="M420 170L435 160" stroke='currentColor' stroke-width='3' stroke-linecap='round'/><path d="M435 180L420 170" stroke='currentColor' stroke-width='3' stroke-linecap='round'/></svg></div></div>
   </div>
 </section>
   </main>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <p>&copy; 2026 Aura. All rights reserved.</p>
+      <p>&copy; 2026 LUMINA. All rights reserved.</p>
       <nav class="footer-nav">
       <a href="index.html">Home</a>
-      <a href="shop-all.html">Shop All</a>
+      <a href="shop.html">Shop</a>
       <a href="collections.html">Collections</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact &amp; Concierge | LUMINA</a>
       </nav>
     </div>
   </footer>
