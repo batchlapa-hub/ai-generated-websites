@@ -86,39 +86,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---- Optional enhancements ---- */
 document.addEventListener('DOMContentLoaded', () => {
-  // FAQ: Ensure only one detail is open at a time
+  // Optional Enhancement: Single-open behavior for FAQ items
   const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    item.addEventListener('click', function() {
-      if (this.classList.contains('active')) return;
 
-      // Close all others
-      faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+  if (faqItems.length > 0) {
+    faqItems.forEach(item => {
+      const summary = item.querySelector('summary');
       
-      // Open clicked one
-      this.classList.add('active');
+      if (summary) {
+        summary.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent native toggle behavior for manual control
+          
+          const details = this.parentElement;
+          const isOpen = details.classList.contains('open');
+
+          // Close all other open FAQs
+          faqItems.forEach(otherItem => {
+            if (otherItem !== details) {
+              const otherSummary = otherItem.querySelector('summary');
+              if (otherSummary && otherSummary.getAttribute('aria-expanded') === 'true') {
+                otherSummary.setAttribute('aria-expanded', 'false');
+                otherItem.classList.remove('open');
+              }
+            }
+          });
+
+          // Toggle current item
+          this.setAttribute('aria-expanded', !isOpen);
+          details.classList.toggle('open', !isOpen);
+        });
+      }
     });
-  });
-
-  // Testimonials: Simple rotation for grids with 3+ items
-  const testimonialGrid = document.querySelector('.testimonial-grid');
-  if (testimonialGrid && testimonialGrid.children.length >= 3) {
-    let currentIndex = 0;
-    
-    setInterval(() => {
-      const items = Array.from(testimonialGrid.children);
-      
-      // Hide all
-      items.forEach(item => item.style.opacity = '0');
-      
-      setTimeout(() => {
-        // Rotate index
-        currentIndex = (currentIndex + 1) % items.length;
-        
-        // Show new active one
-        const newItem = items[currentIndex];
-        newItem.style.opacity = '1';
-      }, 300); // Wait for fade out
-    }, 4000); // Change every 4 seconds
   }
 });
