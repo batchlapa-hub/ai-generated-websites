@@ -9,6 +9,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ---- Mega-menu dropdown (e-commerce archetype only; no-op when absent) ----
+  // Hover already shows the panel via CSS alone with no JS needed. This adds
+  // click/tap support for touch devices where hover doesn't apply, and lets
+  // the same button close it again on a second tap.
+  document.querySelectorAll('.nav-dropdown-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var dropdown = btn.closest('.nav-dropdown');
+      if (!dropdown) return;
+      var isOpen = dropdown.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function (dropdown) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('is-open');
+        var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
   // ---- Scroll reveal ----
   var revealEls = document.querySelectorAll('[data-reveal]');
   if (revealEls.length && 'IntersectionObserver' in window) {
