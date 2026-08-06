@@ -2,8 +2,6 @@
 
 This site was generated and pushed after the maximum number of automated repair attempts. The following issue(s) were still flagged by the validator and may need a manual look:
 
-Found unescaped quote characters in HTML attributes:
-1. index.html: The 'font-heading' CSS variable definition contains a single-quoted string inside double quotes ('Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue') which breaks the attribute syntax.
-2. style.css: Multiple occurrences of font-family definitions (e.g., --font-heading and .article-inner p) contain unescaped single quotes within double-quoted strings, causing CSS parsing errors.
+Sparse content (deterministic check): shop-all.html has only ~196 characters of visible content in <main> -- content generation likely failed for this page. shop-face.html has only ~176 characters of visible content in <main> -- content generation likely failed for this page. shop-eyes.html has only ~170 characters of visible content in <main> -- content generation likely failed for this page. shop-lips.html has only ~168 characters of visible content in <main> -- content generation likely failed for this page.
 
-Generated: 2026-08-05T21:26:20.546Z
+Generated: 2026-08-06T10:04:30.069Z
